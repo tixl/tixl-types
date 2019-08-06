@@ -1,7 +1,7 @@
-import { Block } from './Block'
+import { Block } from './Block';
 
 export type Blockchain = {
-  blocks: Block[]
+  blocks: Block[];
 
-  addBlock(block: Block): Blockchain
-}
+  addBlock(block: Block): Blockchain;
+};

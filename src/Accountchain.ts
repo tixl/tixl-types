@@ -1,8 +1,8 @@
-import { Blockchain } from './Blockchain'
-import { Stealthchain } from './Stealthchain'
+import { Blockchain } from './Blockchain';
+import { Stealthchain } from './Stealthchain';
 
 export type Accountchain = Blockchain & {
-  stealthchains: Stealthchain[]
+  stealthchains: Stealthchain[];
 
-  addStealthchain(stealthchain: Stealthchain): Accountchain
-}
+  addStealthchain(stealthchain: Stealthchain): Accountchain;
+};
