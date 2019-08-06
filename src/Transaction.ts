@@ -6,6 +6,6 @@ export type Transaction = {
   receiverPublicAddress: EncryptedString;
   stealthchainAddress: string;
 
-  affectsMe(privateKey: string): boolean
-  decrypt(privateKey: string): any
-}
+  affectsMe(privateKey: string): boolean;
+  decrypt(privateKey: string): any;
+};
