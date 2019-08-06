@@ -3,7 +3,7 @@ import { Transaction } from './Transaction'
 export type EncryptedNumber = number;
 export type EncryptedString = string;
 
-interface SignatureData {
+export interface SignatureData {
   amount: EncryptedNumber;
   amountCommitment: string;
   balance: EncryptedNumber;
