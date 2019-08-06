@@ -18,6 +18,8 @@ export enum BlockType {
   SEND = 'SEND',
 }
 
+export type Signature = string;
+
 export type Block = {
   getAmount(): EncryptedNumber;
   getAmountCommitment(): string;
@@ -26,7 +28,7 @@ export type Block = {
   getDataForSignature(): SignatureData;
   getDescription(): EncryptedString;
   getPreviousBlock(): Block;
-  getSignature(): string;
+  getSignature(): Signature;
   getTransaction(): Transaction;
   getType(): BlockType;
   getWork(): string;

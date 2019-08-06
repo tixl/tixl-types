@@ -1,13 +1,19 @@
-import { Block } from './Block';
+import { Block, Signature } from './Block';
 import { Blockchain } from './Blockchain';
-import { Wallet } from './Wallet';
+import { PublicKey } from './Keys';
 
 export type Ledger = {
   blockchains: { [key: string]: Blockchain };
   unchainedBlocks: Block[];
 
-  addBlockchain(publicKey: string, blockchain: Blockchain): Ledger;
+  addBlockchain(publicKey: PublicKey, blockchain: Blockchain): Ledger;
   addBlock(block: Block): Ledger;
-  getBlockchain(publicKey: string): Blockchain;
+
+  getBlockchain(publicKey: PublicKey): Blockchain | undefined;
+  getBlockBySig(signature: Signature): Block | undefined;
   getUnchainedBlocks(): Block[];
+  getLatestBlockFromChain(publicKey: PublicKey): Block | undefined;
+  getAllSendBlocksWithoutReceiveBlock(): Block[];
+
+  insertAfterBlock(prev: Block);
 };
