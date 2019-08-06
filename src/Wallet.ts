@@ -1,5 +1,4 @@
-
 export type Wallet = {
-  publicKey: string;
-  privateKey: string;
+  publicKey: string
+  privateKey: string
 }

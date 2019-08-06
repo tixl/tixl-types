@@ -1,3 +1,3 @@
-import { Block } from './Block';
+import { Block } from './Block'
 
-export type GenesisBlock = Block;
+export type GenesisBlock = Block

@@ -1,3 +1,3 @@
-import { Blockchain } from './Blockchain';
+import { Blockchain } from './Blockchain'
 
-export type Stealthchain = Blockchain;
+export type Stealthchain = Blockchain

@@ -1,15 +1,15 @@
 import { Transaction } from './Transaction'
 
-export type EncryptedNumber = number;
-export type EncryptedString = string;
+export type EncryptedNumber = number
+export type EncryptedString = string
 
 export interface SignatureData {
-  amount: EncryptedNumber;
-  amountCommitment: string;
-  balance: EncryptedNumber;
-  balanceCommitment: string;
-  description: EncryptedString;
-  work: string;
+  amount: EncryptedNumber
+  amountCommitment: string
+  balance: EncryptedNumber
+  balanceCommitment: string
+  description: EncryptedString
+  work: string
 }
 
 export enum BlockType {

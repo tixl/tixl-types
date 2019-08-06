@@ -1,10 +1,10 @@
-import { Block } from './Block';
-import { Blockchain } from './Blockchain';
-import { Wallet } from './Wallet';
+import { Block } from './Block'
+import { Blockchain } from './Blockchain'
+import { Wallet } from './Wallet'
 
 export type Ledger = {
-  blockchains: {[ key: string ]: Blockchain};
-  unchainedBlocks: Block[];
+  blockchains: { [key: string]: Blockchain }
+  unchainedBlocks: Block[]
 
   addBlockchain(publicKey: string, blockchain: Blockchain): Ledger
   addBlock(block: Block): Ledger
