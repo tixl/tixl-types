@@ -12,7 +12,16 @@ CREATE TABLE IF NOT EXISTS blockchains (
 CREATE TABLE IF NOT EXISTS blocks (
   id VARCHAR(36) UNIQUE PRIMARY KEY NOT NULL,
   chain_id  VARCHAR(36) NOT NULL,
-  json_content TEXT NOT NULL,
+  type TEXT,
+  prev TEXT,
+  signature TEXT,
+  commitment_amount TEXT,
+  commitment_balance TEXT,
+  receiver_amount TEXT,
+  receiver_blinding_factor_amount TEXT,
+  sender_blinding_factor_balance TEXT,
+  sender_balance TEXT,
+  sender_amount TEXT,
   FOREIGN KEY (chain_id) REFERENCES blockchains(id)
 );
 

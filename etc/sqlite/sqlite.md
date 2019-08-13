@@ -16,5 +16,13 @@
 | --- | --- | --- |
 | id | PK, unique, not null | **VARCHAR(36)** uuid/v1 (timestamp based)  |
 | chain_id | FK -> blockchains.id, not null | **VARCHAR(36)** blockchain id |
-| json_content | not null | **TEXT** block contents |
-
+| type | - | **TEXT** block enum type |
+| prev | - | **TEXT** other block signature |
+| signature | - | **TEXT** own block signature |
+| commitment_amount | - | **TEXT** pedersen amount commitment |
+| commitment_balance | - | **TEXT** pedersen amount commitment |
+| receiver_amount | - | **TEXT** encrypted amount for the receiving party |
+| receiver_blinding_factor_amount | - | **TEXT** encrypted blinding factor for the receiving party |
+| sender_blinding_factor_balance | - | **TEXT** encrypted blinding factor for the sending party |
+| sender_balance | - | **TEXT** encrypted balance factor for the sending party |
+| sender_amount | - | **TEXT** encrypted amount for the sending party |
