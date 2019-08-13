@@ -20,7 +20,7 @@
 | prev | - | **TEXT** other block signature |
 | signature | not null | **TEXT** own block signature |
 | commitment_amount | - | **TEXT** pedersen amount commitment |
-| commitment_balance | - | **TEXT** pedersen amount commitment |
+| commitment_balance | - | **TEXT** pedersen balance commitment |
 | receiver_amount | - | **TEXT** encrypted amount for the receiving party |
 | receiver_blinding_factor_amount | - | **TEXT** encrypted blinding factor for the receiving party |
 | sender_blinding_factor_balance | - | **TEXT** encrypted blinding factor for the sending party |
