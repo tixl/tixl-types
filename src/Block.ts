@@ -17,7 +17,7 @@ export type Block = {
   chainId: StorageId;
   signature: Signature;
   type: BlockType;
-  prev: Block | null;
+  prev: Signature | null;
   work: string;
   transaction: Transaction;
   amountCommitment: string;
