@@ -1,16 +1,10 @@
 import { Transaction } from './Transaction';
+import { StorageId } from './Blockchain';
 
-export type EncryptedNumber = number;
+export type EncryptedNumber = string;
 export type EncryptedString = string;
-
-export interface SignatureData {
-  amount: EncryptedNumber;
-  amountCommitment: string;
-  balance: EncryptedNumber;
-  balanceCommitment: string;
-  description: EncryptedString;
-  work: string;
-}
+export type Signature = string;
+export type SignatureData = {};
 
 export enum BlockType {
   OPENING = 'OPENING',
@@ -18,29 +12,27 @@ export enum BlockType {
   SEND = 'SEND',
 }
 
-export type Signature = string;
-
 export type Block = {
-  getAmount(): EncryptedNumber;
-  getAmountCommitment(): string;
-  getBalance(): EncryptedNumber;
-  getBalanceCommitment(): string;
+  id: StorageId;
+  chainId: StorageId;
+  signature: Signature;
+  type: BlockType;
+  prev: Block | null;
+  work: string;
+  transaction: Transaction;
+  amountCommitment: string;
+  balanceCommitment: string;
+  receiverAmount: EncryptedNumber;
+  receiverBlindingFactorAmount: EncryptedString;
+  senderBlindingFactorBalance: EncryptedString;
+  senderBalance: EncryptedNumber;
+  senderAmount: EncryptedNumber;
+
   getDataForSignature(): SignatureData;
-  getDescription(): EncryptedString;
-  getPreviousBlock(): Block;
-  getSignature(): Signature;
-  getTransaction(): Transaction;
-  getType(): BlockType;
-  getWork(): string;
   isValid(): boolean;
   setAmount(publicKey: string, amount: number): Block;
   setBalance(publicKey: string, balance: number): Block;
-  setDescription(description: string): Block;
-  setPreviousBlock(block: Block): Block;
-  setSignature(signature: string): Block;
-  setTransaction(transaction: Transaction): Block;
-  setType(type: BlockType): Block;
-  setWork(work: string): Block;
   validateCommitment(): boolean;
   verifySignature(accountOwnersPublicKey: string): boolean;
+  clone(): Block;
 };
