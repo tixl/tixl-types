@@ -6,19 +6,19 @@
 
 | Field | Flags | Description |
 | --- | --- | --- |
-| id | PK, unique, not null | **VARCHAR(36)** uuid/v1 (timestamp based)  |
+| id | PK, unique, not null | **VARCHAR(64)** sha256 of public_key  |
 | public_key | unique, not null | **TEXT** encryption key (NTRU public) |
-| leaf_id | FK -> blocks.id, unique | **VARCHAR(36)** a block id |
+| leaf_id | FK -> blocks.id, unique | **VARCHAR(64)** block id |
 
 ### blocks
 
 | Field | Flags | Description |
 | --- | --- | --- |
-| id | PK, unique, not null | **VARCHAR(36)** uuid/v1 (timestamp based)  |
-| chain_id | FK -> blockchains.id, not null | **VARCHAR(36)** blockchain id |
+| id | PK, unique, not null | **VARCHAR(64)** sha256 of signature  |
+| chain_id | FK -> blockchains.id, not null | **VARCHAR(64)** blockchain id |
 | type | not null | **TEXT** block enum type |
-| prev | - | **TEXT** other block signature |
-| signature | not null | **TEXT** own block signature |
+| prev | unique | **TEXT** other block signature |
+| signature | unique, not null | **TEXT** own block signature |
 | commitment_amount | - | **TEXT** pedersen amount commitment |
 | commitment_balance | - | **TEXT** pedersen balance commitment |
 | receiver_amount | - | **TEXT** encrypted amount for the receiving party |

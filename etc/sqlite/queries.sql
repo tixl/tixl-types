@@ -3,18 +3,18 @@ PRAGMA foreign_keys = ON;
 
 -- tables
 CREATE TABLE IF NOT EXISTS blockchains (
-  id VARCHAR(36) UNIQUE PRIMARY KEY NOT NULL,
+  id VARCHAR(64) UNIQUE PRIMARY KEY NOT NULL,
   public_key TEXT UNIQUE NOT NULL,
-  leaf_id VARCHAR(36) UNIQUE,
+  leaf_id VARCHAR(64) UNIQUE,
   FOREIGN KEY (leaf_id) REFERENCES blocks(id)
 );
 
 CREATE TABLE IF NOT EXISTS blocks (
-  id VARCHAR(36) UNIQUE PRIMARY KEY NOT NULL,
-  chain_id  VARCHAR(36) NOT NULL,
+  id VARCHAR(64) UNIQUE PRIMARY KEY NOT NULL,
+  chain_id  VARCHAR(64) NOT NULL,
   type TEXT NOT NULL,
-  prev TEXT,
-  signature TEXT NOT NULL,
+  prev TEXT UNIQUE,
+  signature TEXT UNIQUE NOT NULL,
   commitment_amount TEXT,
   commitment_balance TEXT,
   receiver_amount TEXT,
@@ -28,3 +28,6 @@ CREATE TABLE IF NOT EXISTS blocks (
 -- example queries
 INSERT INTO blockchains (id, public_key) VALUES (?,?)
 INSERT INTO blocks (id, chain_id, type, signature) VALUES (?,?,?,?)
+
+-- select data query
+SELECT * from blocks WHERE signature IN (?)
