@@ -1,4 +1,5 @@
 import { Block } from './Block';
+import { Blockchain } from './Blockchain';
 
 export type Storage = {
   /**
@@ -6,4 +7,17 @@ export type Storage = {
    * Return the list of persisted blocks.
    */
   persistBlocks(blocks: Block[]): Promise<Block[]>;
+
+  /**
+   * Write a list of chains in to the storage.
+   * Return the list of persisted blockchains.
+   */
+  persistChains(blockchains: Blockchain[]): Promise<Blockchain[]>;
+
+  /**
+   * Run as transaction.
+   * If the callback Promise resolves, the transaction was committed. Otherwise there was a rollback.
+   * Returns a Promise that resolves if the transaction was committed.
+   */
+  runTransaction(cb: () => Promise<any>): Promise<any>;
 };
