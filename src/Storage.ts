@@ -19,5 +19,5 @@ export type Storage = {
    * If the callback Promise resolves, the transaction was committed. Otherwise there was a rollback.
    * Returns a Promise that resolves if the transaction was committed.
    */
-  runTransaction(cb: () => Promise<any>): Promise<any>;
+  runTransaction(cb: () => Promise<any>, db?: any): Promise<any>;
 };
