@@ -1,11 +1,8 @@
-import { EncryptedNumber, EncryptedString } from './Block';
+import { Block } from './Block';
+import { PublicKey } from './Keys';
 
 export type Transaction = {
-  amount: EncryptedNumber;
-  description: EncryptedString;
-  receiverPublicAddress: EncryptedString;
-  stealthchainAddress: string;
-
-  affectsMe(privateKey: string): boolean;
-  decrypt(privateKey: string): any;
+  blocks: Block[];
+  publicKey: PublicKey;
+  work: string;
 };
