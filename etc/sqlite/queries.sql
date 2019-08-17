@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS blocks (
   chain_id  VARCHAR(64) NOT NULL,
   type TEXT NOT NULL,
   prev TEXT UNIQUE,
+  reference TEXT,
   signature TEXT UNIQUE NOT NULL,
+  payload TEXT,
   commitment_amount TEXT,
   commitment_balance TEXT,
   receiver_amount TEXT,
@@ -23,7 +25,8 @@ CREATE TABLE IF NOT EXISTS blocks (
   sender_balance TEXT,
   sender_amount TEXT,
   FOREIGN KEY (chain_id) REFERENCES blockchains(id),
-  FOREIGN KEY (prev) REFERENCES blocks(signature)
+  FOREIGN KEY (prev) REFERENCES blocks(signature),
+  FOREIGN KEY (reference) REFERENCES blocks(signature)
 );
 
 -- example queries
