@@ -35,3 +35,6 @@ INSERT INTO blocks (id, chain_id, type, signature) VALUES (?,?,?,?)
 
 -- select data query
 SELECT * from blocks WHERE signature IN (?)
+
+-- update leaf query
+UPDATE blockchains SET leaf_id = ? WHERE id = ?
