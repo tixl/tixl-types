@@ -2,6 +2,10 @@ import { Block, Signature } from './Block';
 import { Blockchain } from './Blockchain';
 import { PublicKey } from './Keys';
 
+export type InMemory = {
+  db: any;
+};
+
 export type Storage = {
   /**
    * Write a list of blocks into the storage.
