@@ -16,4 +16,9 @@ export type Transaction = {
    * Proof that a certain amount of work was burned.
    */
   work: string;
+
+  /**
+   * Return true if transaction wants to write an opening block.
+   */
+  containsOpeningBlock(): boolean;
 };

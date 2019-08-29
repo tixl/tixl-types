@@ -7,9 +7,9 @@ import { InMemory } from './Storage';
 export type Ledger = {
   /**
    * Save transactions to the ledger. If inMemory is used, all transactions are saved in-memory.
-   * Returns the tx, if it is validated and saved.
+   * Returns the txs, if it is validated and saved.
    */
-  process(tx: Transaction, inMemory?: InMemory): Promise<Transaction>;
+  process(txs: Transaction[], inMemory?: InMemory): Promise<Transaction[]>;
 
   /**
    * Validate a transaction against the existing blockchain data.
