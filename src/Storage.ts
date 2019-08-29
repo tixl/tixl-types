@@ -11,13 +11,13 @@ export type Storage = {
    * Write a list of blocks into the storage.
    * Return the list of persisted blocks.
    */
-  persistBlocks(blocks: Block[]): Promise<Block[]>;
+  persistBlocks(blocks: Block[], db?: any): Promise<Block[]>;
 
   /**
    * Write a list of chains in to the storage.
    * Return the list of persisted blockchains.
    */
-  persistChains(blockchains: Blockchain[]): Promise<Blockchain[]>;
+  persistChains(blockchains: Blockchain[], db?: any): Promise<Blockchain[]>;
 
   findBlockchain(publicKey: PublicKey): Promise<Blockchain>;
   findLeafBlocks(publicKey?: PublicKey): Promise<Block[]>;

@@ -6,12 +6,13 @@ import { InMemory } from './Storage';
 
 export type Ledger = {
   /**
-   * Process a transaction that leads to changes on the blockchain.
+   * Save transactions to the ledger. If inMemory is used, all transactions are saved in-memory.
+   * Returns the tx, if it is validated and saved.
    */
   process(tx: Transaction, inMemory?: InMemory): Promise<Transaction>;
 
   /**
-   * Validate a transaction against the local blockchain data.
+   * Validate a transaction against the existing blockchain data.
    */
   validate(tx: Transaction, inMemory?: InMemory): Promise<Transaction>;
 
@@ -36,12 +37,13 @@ export type Ledger = {
   getSendBlocksWithoutReceive(): Promise<Block[]>;
 
   /**
-   * Create an in-memory state.
+   * Create and return an in-memory state.
    */
   memory(): Promise<InMemory>;
 
   /**
-   * Persist the in-memory state. Return the written transactions.
+   * Persist the in-memory state to disk. Then close the in-memory state.
+   * Return the written transactions.
    */
-  flush(state: InMemory): Promise<Transaction[]>;
+  flush(txs: Transaction[], state: InMemory): Promise<Transaction[]>;
 };
