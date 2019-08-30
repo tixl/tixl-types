@@ -1,4 +1,3 @@
-import { Transaction } from './Transaction';
 import { StorageId } from './Blockchain';
 
 export type EncryptedNumber = string;
@@ -20,7 +19,6 @@ export type Block = {
   prev: Signature | null;
   reference: Signature | null;
   payload: EncryptedString;
-  transaction: Transaction;
   amountCommitment: string;
   balanceCommitment: string;
   receiverAmount: EncryptedNumber;
