@@ -1,4 +1,3 @@
-import { Transaction } from './Transaction';
 import { StorageId } from './Blockchain';
 
 export type EncryptedNumber = string;
