@@ -48,10 +48,10 @@ export type Ledger = {
   flush(txs: Transaction[], state: InMemory): Promise<Transaction[]>;
 
   /**
-   * Export disk content to a file path. Start at the slot id (including the blocks from the slot).
+   * Export disk content to a file path. Start at the transaction id (including the blocks from the transaction).
    * Generates a .sqlite file at the given path.
    */
-  export(slotId: string, path: string): Promise<any>;
+  export(transactionId: string, path: string): Promise<any>;
 
   /**
    * Import the given sqlite file into the ledger storage. Generate the .sqlite file with export().
@@ -60,8 +60,8 @@ export type Ledger = {
 
   /**
    * Return a hash that reflects the current state of the blockchain data (like a git commit hash).
-   * Include slots up until the given slot id. It is generated based on the slot signatures.
+   * Include transactions up until the given transaction id. It is generated based on the transaction signatures.
    * Can be calculated with only a light blockchain file (contains only leaf blocks).
    */
-  hash(slotId): Promise<string>;
+  hash(transactionId): Promise<string>;
 };

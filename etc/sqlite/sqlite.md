@@ -16,6 +16,7 @@
 | --- | --- | --- |
 | id | PK, unique, not null | **VARCHAR(64)** sha256 of signature  |
 | chain_id | FK -> blockchains.id, not null | **VARCHAR(64)** blockchain id |
+| transactions_id | FK -> transactions.id, not null | **VARCHAR(64)** transaction id |
 | type | not null | **TEXT** block enum type |
 | prev | FK -> blocks.signature, unique | **TEXT** signature reference to chain blocks |
 | signature | unique, not null | **TEXT** own block signature |
@@ -28,16 +29,9 @@
 | sender_balance | - | **TEXT** encrypted balance factor for the sending party |
 | sender_amount | - | **TEXT** encrypted amount for the sending party |
 
-### slots
+### transactions
 
 | Field | Flags | Description |
 | --- | --- | --- |
 | id | PK, unique, not null | **VARCHAR(64)** sha256 signature |
 | created_at | not null | **NUMBER** unix time of network approval |
-
-### slot_blocks
-
-| Field | Flags | Description |
-| --- | --- | --- |
-| slot_id | FK -> slots.id, not null | **VARCHAR(64)** slot id |
-| block_id | FK -> blocks.id, unique, not null | **VARCHAR(64)** block id |
