@@ -24,6 +24,7 @@ export type Storage = {
   findBlocks(signatures: Signature[]): Promise<Block[]>;
   findPk(publicKey: PublicKey, db?: any): Promise<PublicKey>;
   findSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
+  findPrevSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
 
   /**
    * Return all send blocks that are not referenced by receive blocks.
