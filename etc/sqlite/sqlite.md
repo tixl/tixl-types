@@ -16,7 +16,7 @@
 | --- | --- | --- |
 | id | PK, unique, not null | **VARCHAR(64)** sha256 of signature  |
 | chain_id | FK -> blockchains.id, not null | **VARCHAR(64)** blockchain id |
-| transactions_id | FK -> transactions.id, not null | **VARCHAR(64)** transaction id |
+| transaction_id | FK -> transactions.id, not null | **VARCHAR(64)** transaction id |
 | type | not null | **TEXT** block enum type |
 | prev | FK -> blocks.signature, unique | **TEXT** signature reference to chain blocks |
 | signature | unique, not null | **TEXT** own block signature |
