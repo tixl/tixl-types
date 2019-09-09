@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS blocks (
   chain_id  VARCHAR(64) NOT NULL,
   type TEXT NOT NULL,
   prev TEXT UNIQUE,
-  reference TEXT,
   signature TEXT UNIQUE NOT NULL,
   payload TEXT,
   commitment_amount TEXT,

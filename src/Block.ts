@@ -17,7 +17,6 @@ export type Block = {
   signature: Signature;
   type: BlockType;
   prev: Signature | null;
-  reference: Signature | null;
   payload: EncryptedString;
   amountCommitment: string;
   balanceCommitment: string;

@@ -18,7 +18,6 @@
 | chain_id | FK -> blockchains.id, not null | **VARCHAR(64)** blockchain id |
 | type | not null | **TEXT** block enum type |
 | prev | FK -> blocks.signature, unique | **TEXT** signature reference to chain blocks |
-| reference | FK -> blocks.signature | **TEXT** public reference to another block |
 | signature | unique, not null | **TEXT** own block signature |
 | payload | - | **TEXT** encrypted arbitrary data that is stored on the blockchain |
 | commitment_amount | - | **TEXT** pedersen amount commitment |

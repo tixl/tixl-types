@@ -28,7 +28,7 @@ export type Storage = {
   /**
    * Return all send blocks that are not referenced by receive blocks.
    */
-  findSendBlocksWithoutReference(): Promise<Block[]>;
+  findUnusedSendBlocks(): Promise<Block[]>;
 
   /**
    * Run as transaction.
