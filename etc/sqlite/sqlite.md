@@ -27,3 +27,17 @@
 | sender_blinding_factor_balance | - | **TEXT** encrypted blinding factor for the sending party |
 | sender_balance | - | **TEXT** encrypted balance factor for the sending party |
 | sender_amount | - | **TEXT** encrypted amount for the sending party |
+
+### slots
+
+| Field | Flags | Description |
+| --- | --- | --- |
+| id | PK, unique, not null | **VARCHAR(64)** sha256 signature |
+| created_at | not null | **NUMBER** unix time of network approval |
+
+### slot_blocks
+
+| Field | Flags | Description |
+| --- | --- | --- |
+| slot_id | FK -> slots.id, not null | **VARCHAR(64)** slot id |
+| block_id | FK -> blocks.id, unique, not null | **VARCHAR(64)** block id |
