@@ -30,9 +30,9 @@ export type Block = {
 
   getDataForSignature(): SignatureData;
   isValid(): boolean;
-  setAmount(publicKey: string, amount: number): Block;
-  setBalance(publicKey: string, balance: number): Block;
-  validateCommitment(): boolean;
+  setAmount(publicKey: string, amount: number, balance: number, prev: Block): void;
+  verifyCommitments(prev: Block): boolean;
   verifySignature(accountOwnersPublicKey: string): boolean;
-  clone(): Block;
+  encrypt(): Promise<void>;
+  decrypt(): Promise<void>;
 };
