@@ -20,6 +20,8 @@ export type Block = {
   payload: EncryptedString;
   amountCommitment: string;
   balanceCommitment: string;
+  amountRangeProof: string;
+  balanceRangeProof: string;
   receiverAmount: EncryptedNumber;
   receiverBlindingFactorAmount: EncryptedString;
   senderBlindingFactorBalance: EncryptedString;
