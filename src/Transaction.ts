@@ -1,5 +1,5 @@
 import { Block } from './Block';
-import { PublicKey } from './Keys';
+import { SigPublicKey } from './Keys';
 
 export type Transaction = {
   /**
@@ -10,7 +10,7 @@ export type Transaction = {
   /**
    * Is always the public key of the related block chain.
    */
-  publicKey: PublicKey;
+  publicKey: SigPublicKey;
 
   /**
    * Proof that a certain amount of work was burned.

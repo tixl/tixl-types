@@ -1,6 +1,6 @@
 import { Block, Signature } from './Block';
 import { Blockchain } from './Blockchain';
-import { PublicKey } from './Keys';
+import { SigPublicKey } from './Keys';
 
 export type InMemory = {
   db: any;
@@ -19,10 +19,10 @@ export type Storage = {
    */
   persistChains(blockchains: Blockchain[], db?: any): Promise<Blockchain[]>;
 
-  findBlockchain(publicKey: PublicKey): Promise<Blockchain | undefined>;
-  findLeafBlocks(publicKey?: PublicKey): Promise<Block[]>;
+  findBlockchain(publicKey: SigPublicKey): Promise<Blockchain | undefined>;
+  findLeafBlocks(publicKey?: SigPublicKey): Promise<Block[]>;
   findBlocks(signatures: Signature[]): Promise<Block[]>;
-  findPk(publicKey: PublicKey, db?: any): Promise<PublicKey | undefined>;
+  findPk(publicKey: SigPublicKey, db?: any): Promise<SigPublicKey | undefined>;
   findSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
   findPrevSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
 

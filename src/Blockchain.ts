@@ -1,12 +1,12 @@
 import { Block } from './Block';
-import { PublicKey } from './Keys';
+import { SigPublicKey } from './Keys';
 
 export type StorageId = string;
 
 export type Blockchain = {
   id: StorageId;
   leafId: StorageId | undefined;
-  publicKey: PublicKey;
+  publicKey: SigPublicKey;
   blocks: Block[];
 
   addBlock(block: Block): Blockchain;

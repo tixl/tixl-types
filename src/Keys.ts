@@ -1,2 +1,4 @@
-export type PrivateKey = string;
-export type PublicKey = string;
+export type NTRUPrivateKey = string;
+export type NTRUPublicKey = string;
+export type SigPublicKey = string;
+export type SigPrivateKey = string;

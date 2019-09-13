@@ -1,6 +1,6 @@
 import { Block, Signature } from './Block';
 import { Blockchain } from './Blockchain';
-import { PublicKey } from './Keys';
+import { SigPublicKey } from './Keys';
 import { Transaction } from './Transaction';
 import { InMemory } from './Storage';
 
@@ -19,7 +19,7 @@ export type Ledger = {
   /**
    * Returns a blockchain identified by its public key.
    */
-  getBlockchain(publicKey: PublicKey): Promise<Blockchain>;
+  getBlockchain(key: SigPublicKey): Promise<Blockchain>;
 
   /**
    * Return blocks identified by the given signatures.
