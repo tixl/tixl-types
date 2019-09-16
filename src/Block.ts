@@ -42,8 +42,5 @@ export type Block = {
   senderAmount: EncryptedNumber;
 
   getDataForSignature(): SignatureData;
-  isValid(): boolean;
   setAmount(amount: number, balance: number, prev: Block): void;
-  encrypt(): Promise<void>;
-  decrypt(): Promise<void>;
 };
