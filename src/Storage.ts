@@ -21,7 +21,7 @@ export type Storage = {
 
   findBlockchain(publicKey: SigPublicKey): Promise<Blockchain | undefined>;
   findLeafBlocks(publicKey?: SigPublicKey): Promise<Block[]>;
-  findBlocks(signatures: Signature[]): Promise<Block[]>;
+  findBlocks(signatures: Signature[], db?: any): Promise<Block[]>;
   findPk(publicKey: SigPublicKey, db?: any): Promise<SigPublicKey | undefined>;
   findSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
   findPrevSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
