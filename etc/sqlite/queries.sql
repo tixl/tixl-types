@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS blocks (
   payload TEXT,
   commitment_amount TEXT,
   commitment_balance TEXT,
+  rangeproof_amount TEXT,
+  rangeproof_balance TEXT,
   receiver_amount TEXT,
   receiver_blinding_factor_amount TEXT,
   sender_blinding_factor_balance TEXT,

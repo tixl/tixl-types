@@ -27,3 +27,5 @@
 | sender_blinding_factor_balance | - | **TEXT** encrypted blinding factor for the sending party |
 | sender_balance | - | **TEXT** encrypted balance factor for the sending party |
 | sender_amount | - | **TEXT** encrypted amount for the sending party |
+| rangeproof_amount | - | **TEXT** rangeproof commitment |
+| rangeproof_balance | - | **TEXT** rangeproof commitment |

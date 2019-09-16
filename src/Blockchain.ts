@@ -9,6 +9,6 @@ export type Blockchain = {
   publicKey: SigPublicKey;
   blocks: Block[];
 
-  addBlock(block: Block): Blockchain;
+  addBlock(block: Block): void;
   leaf(): Block | undefined;
 };
