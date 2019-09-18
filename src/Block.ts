@@ -31,6 +31,7 @@ export type Block = {
   type: BlockType;
   prev: Signature | null;
   payload: EncryptedString;
+  refBlock: Signature | null;
   amountCommitment: string;
   balanceCommitment: string;
   amountRangeProof: string;

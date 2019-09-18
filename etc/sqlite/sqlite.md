@@ -20,6 +20,7 @@
 | prev | FK -> blocks.signature, unique | **TEXT** signature reference to chain blocks |
 | signature | unique, not null | **TEXT** own block signature |
 | payload | - | **TEXT** encrypted arbitrary data that is stored on the blockchain |
+| ref_block | FK -> blocks.signature | **TEXT** signature reference to a block of another chain |
 | commitment_amount | - | **TEXT** pedersen amount commitment |
 | commitment_balance | - | **TEXT** pedersen balance commitment |
 | receiver_amount | - | **TEXT** encrypted amount for the receiving party |
