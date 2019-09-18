@@ -26,8 +26,7 @@ CREATE TABLE IF NOT EXISTS blocks (
   sender_balance TEXT,
   sender_amount TEXT,
   FOREIGN KEY (chain_id) REFERENCES blockchains(id),
-  FOREIGN KEY (prev) REFERENCES blocks(signature),
-  FOREIGN KEY (reference) REFERENCES blocks(signature)
+  FOREIGN KEY (prev) REFERENCES blocks(signature)
 );
 
 -- example queries
