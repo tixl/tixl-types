@@ -2,6 +2,11 @@
 PRAGMA foreign_keys = ON;
 
 -- tables
+CREATE TABLE IF NOT EXISTS transactions (
+  id VARCHAR(64) UNIQUE PRIMARY KEY NOT NULL,
+  created_at INTEGER NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS blockchains (
   id VARCHAR(64) UNIQUE PRIMARY KEY NOT NULL,
   public_key TEXT UNIQUE NOT NULL,
@@ -12,6 +17,7 @@ CREATE TABLE IF NOT EXISTS blockchains (
 CREATE TABLE IF NOT EXISTS blocks (
   id VARCHAR(64) UNIQUE PRIMARY KEY NOT NULL,
   chain_id VARCHAR(64) NOT NULL,
+  transaction_id VARCHAR(64) NOT NULL,
   type TEXT NOT NULL,
   prev TEXT UNIQUE,
   signature TEXT UNIQUE NOT NULL,
@@ -27,6 +33,7 @@ CREATE TABLE IF NOT EXISTS blocks (
   sender_balance TEXT,
   sender_amount TEXT,
   FOREIGN KEY (chain_id) REFERENCES blockchains(id),
+  FOREIGN KEY (transaction_id) REFERENCES transactions(id),
   FOREIGN KEY (prev) REFERENCES blocks(signature),
   FOREIGN KEY (ref_block) REFERENCES blocks(signature)
 );

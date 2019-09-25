@@ -37,4 +37,4 @@
 | Field | Flags | Description |
 | --- | --- | --- |
 | id | PK, unique, not null | **VARCHAR(64)** sha256 signature |
-| created_at | not null | **NUMBER** unix time of network approval |
+| created_at | not null | **INTEGER** unix time of network approval |
