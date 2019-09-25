@@ -63,5 +63,5 @@ export type Ledger = {
    * Include transactions up until the given transaction id. It is generated based on the transaction signatures.
    * Can be calculated with only a light blockchain file (contains only leaf blocks).
    */
-  hash(transactionId): Promise<string>;
+  hash(transactionId: string): Promise<string>;
 };
