@@ -1,6 +1,7 @@
 import { Block, Signature } from './Block';
 import { Blockchain } from './Blockchain';
 import { SigPublicKey } from './Keys';
+import { Transaction } from './Transaction';
 
 export type InMemory = {
   db: any;
@@ -18,6 +19,12 @@ export type Storage = {
    * Return the list of persisted blockchains.
    */
   persistChains(blockchains: Blockchain[], db?: any): Promise<Blockchain[]>;
+
+  /**
+   * Write a list of transactions in to the storage.
+   * Return the list of persisted transactions.
+   */
+  persistTx(txs: Transaction[], db?: any): Promise<Transaction[]>;
 
   findBlockchain(publicKey: SigPublicKey, db?: any): Promise<Blockchain | undefined>;
   findLeafBlocks(publicKey?: SigPublicKey, db?: any): Promise<Block[]>;

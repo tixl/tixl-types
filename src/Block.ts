@@ -27,6 +27,7 @@ export enum BlockType {
 export type Block = {
   id: StorageId;
   chainId: StorageId;
+  txId: StorageId;
   signature: Signature;
   type: BlockType;
   prev: Signature | null;
