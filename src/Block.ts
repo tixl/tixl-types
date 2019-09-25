@@ -3,7 +3,20 @@ import { StorageId } from './Blockchain';
 export type EncryptedNumber = string;
 export type EncryptedString = string;
 export type Signature = string;
-export type SignatureData = {};
+export type SignatureData = {
+  type: string;
+  prev: string | null;
+  payload: string;
+  amountCommitment: string;
+  balanceCommitment: string;
+  amountRangeProof: string;
+  balanceRangeProof: string;
+  receiverAmount: string;
+  receiverBlindingFactorAmount: string;
+  senderBlindingFactorBalance: string;
+  senderBalance: string;
+  senderAmount: string;
+};
 
 export enum BlockType {
   OPENING = 'OPENING',
@@ -18,8 +31,11 @@ export type Block = {
   type: BlockType;
   prev: Signature | null;
   payload: EncryptedString;
+  refBlock: Signature | null;
   amountCommitment: string;
   balanceCommitment: string;
+  amountRangeProof: string;
+  balanceRangeProof: string;
   receiverAmount: EncryptedNumber;
   receiverBlindingFactorAmount: EncryptedString;
   senderBlindingFactorBalance: EncryptedString;
@@ -27,10 +43,5 @@ export type Block = {
   senderAmount: EncryptedNumber;
 
   getDataForSignature(): SignatureData;
-  isValid(): boolean;
-  setAmount(publicKey: string, amount: number): Block;
-  setBalance(publicKey: string, balance: number): Block;
-  validateCommitment(): boolean;
-  verifySignature(accountOwnersPublicKey: string): boolean;
-  clone(): Block;
+  setAmount(amount: number, balance: number, prev: Block): void;
 };

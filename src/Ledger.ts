@@ -1,6 +1,6 @@
 import { Block, Signature } from './Block';
 import { Blockchain } from './Blockchain';
-import { PublicKey } from './Keys';
+import { SigPublicKey } from './Keys';
 import { Transaction } from './Transaction';
 import { InMemory } from './Storage';
 
@@ -9,17 +9,17 @@ export type Ledger = {
    * Save one transaction to the ledger. If inMemory is used, all transactions are saved in-memory.
    * Returns the tx, if it is validated and saved.
    */
-  process(txs: Transaction, inMemory?: InMemory): Promise<Transaction>;
+  process(txs: Transaction, inMemory?: InMemory): Promise<Transaction | undefined>;
 
   /**
    * Validate a transaction against the existing blockchain data.
    */
-  validate(tx: Transaction, inMemory?: InMemory): Promise<Transaction>;
+  validate(tx: Transaction, inMemory?: InMemory): Promise<Transaction | undefined>;
 
   /**
    * Returns a blockchain identified by its public key.
    */
-  getBlockchain(publicKey: PublicKey): Promise<Blockchain>;
+  getBlockchain(key: SigPublicKey): Promise<Blockchain | undefined>;
 
   /**
    * Return blocks identified by the given signatures.

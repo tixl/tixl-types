@@ -21,6 +21,7 @@
 | prev | FK -> blocks.signature, unique | **TEXT** signature reference to chain blocks |
 | signature | unique, not null | **TEXT** own block signature |
 | payload | - | **TEXT** encrypted arbitrary data that is stored on the blockchain |
+| ref_block | FK -> blocks.signature | **TEXT** signature reference to a block of another chain |
 | commitment_amount | - | **TEXT** pedersen amount commitment |
 | commitment_balance | - | **TEXT** pedersen balance commitment |
 | receiver_amount | - | **TEXT** encrypted amount for the receiving party |
@@ -28,6 +29,8 @@
 | sender_blinding_factor_balance | - | **TEXT** encrypted blinding factor for the sending party |
 | sender_balance | - | **TEXT** encrypted balance factor for the sending party |
 | sender_amount | - | **TEXT** encrypted amount for the sending party |
+| rangeproof_amount | - | **TEXT** rangeproof commitment |
+| rangeproof_balance | - | **TEXT** rangeproof commitment |
 
 ### transactions
 
