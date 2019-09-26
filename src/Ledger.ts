@@ -48,20 +48,20 @@ export type Ledger = {
   flush(txs: Transaction[], state: InMemory): Promise<Transaction[]>;
 
   /**
-   * Export disk content to a file path. Start at the transaction id (including the blocks from the transaction).
+   * Export disk content to a file path. Start with transactions at the network approval time.
    * Generates a .sqlite file at the given path.
    */
-  export(transactionId: string, path: string): Promise<any>;
+  export(networkApprovalTime: number, path: string): Promise<void>;
 
   /**
    * Import the given sqlite file into the ledger storage. Generate the .sqlite file with export().
    */
-  import(path: string): Promise<any>;
+  import(path: string): Promise<void>;
 
   /**
    * Return a hash that reflects the current state of the blockchain data (like a git commit hash).
-   * Include transactions up until the given transaction id. It is generated based on the transaction signatures.
-   * Can be calculated with only a light blockchain file (contains only leaf blocks).
+   * Include transactions up until the given transaction id.
+   * Can be calculated with a light blockchain file (contains only leaf blocks).
    */
-  hash(transactionId: string): Promise<string>;
+  hash(transactionId?: string, state?: InMemory): Promise<string>;
 };

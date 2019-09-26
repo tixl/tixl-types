@@ -25,9 +25,4 @@ export type Transaction = {
    * Return true if transaction wants to write an opening block.
    */
   containsOpeningBlock(): boolean;
-
-  /**
-   * Returns a hash based on the blocks in this transaction.
-   */
-  hash(): StorageId | undefined;
 };

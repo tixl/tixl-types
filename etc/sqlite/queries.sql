@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS blockchains (
 CREATE TABLE IF NOT EXISTS blocks (
   id VARCHAR(64) UNIQUE PRIMARY KEY NOT NULL,
   chain_id VARCHAR(64) NOT NULL,
-  transaction_id VARCHAR(64) NOT NULL,
+  transaction_id VARCHAR(64),
   type TEXT NOT NULL,
   prev TEXT UNIQUE,
   signature TEXT UNIQUE NOT NULL,
