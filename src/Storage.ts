@@ -32,7 +32,7 @@ export type Storage = {
   findPk(publicKey: SigPublicKey, db?: any): Promise<SigPublicKey | undefined>;
   findSignatures(signatures: Signature[], publicKey?: SigPublicKey, db?: any): Promise<Signature[]>;
   findPrevSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
-  findTransaction(hash: string, db?: any): Promise<Transaction[]>;
+  findTransaction(hash?: string, db?: any): Promise<Transaction[]>;
 
   /**
    * Return all send blocks that are not referenced by receive blocks.
