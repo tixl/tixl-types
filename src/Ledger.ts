@@ -61,7 +61,6 @@ export type Ledger = {
   /**
    * Return a hash that reflects the current state of the blockchain data (like a git commit hash).
    * Include transactions up until the given transaction id.
-   * Can be calculated with a light blockchain file (contains only leaf blocks).
    */
-  hash(transactionId?: string, state?: InMemory): Promise<string>;
+  hash(transactionId?: string, state?: InMemory): Promise<string | undefined>;
 };
