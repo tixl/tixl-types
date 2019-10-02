@@ -4,6 +4,8 @@ import { SigPublicKey } from './Keys';
 import { Transaction } from './Transaction';
 import { InMemory } from './Storage';
 
+export const TOTAL_TIXL_SUPPLY = 900000000000;
+
 export type Ledger = {
   /**
    * Save one transaction to the ledger. If inMemory is used, all transactions are saved in-memory.
