@@ -50,4 +50,15 @@ export type Storage = {
    * Return a hash for the latest storage state.
    */
   hash(db?: any): Promise<string>;
+
+  /**
+   * Create a export file with blocks and blockchains.
+   * Starting from the given timestamp (network approval time).
+   */
+  createExport(db?: any, exportPath?: string, timestamp?: number): Promise<void>;
+
+  /**
+   * Copy blocks and blockchains from a sqlite file into the ledger.
+   */
+  runImport(filePath: string, db?: any): Promise<void>;
 };

@@ -51,16 +51,20 @@ export type Ledger = {
    * Export disk content to a file path. Start with transactions at the network approval time.
    * Generates a .sqlite file at the given path.
    */
-  export(networkApprovalTime: number, path: string): Promise<void>;
+  createExport(networkApprovalTime: number, path: string): Promise<void>;
 
   /**
-   * Import the given sqlite file into the ledger storage. Generate the .sqlite file with export().
+   * Import the given sqlite file into the ledger storage.
    */
-  import(path: string): Promise<void>;
+  runImport(path: string): Promise<void>;
+
+  /**
+   * Return true, if the given transaction id aka. ledger hash is known = valid.
+   */
+  validHash(hash?: string, inMemory?: InMemory): Promise<boolean>;
 
   /**
    * Return a hash that reflects the current state of the blockchain data (like a git commit hash).
-   * Include transactions up until the given transaction id.
    */
-  hash(transactionId?: string, state?: InMemory): Promise<string | undefined>;
+  hash(inMemory?: InMemory): Promise<string | undefined>;
 };
