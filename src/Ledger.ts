@@ -68,5 +68,5 @@ export type Ledger = {
   /**
    * Return a hash that reflects the current state of the blockchain data (like a git commit hash).
    */
-  hash(inMemory?: InMemory): Promise<string | undefined>;
+  hash(inMemory?: InMemory): Promise<string>;
 };
