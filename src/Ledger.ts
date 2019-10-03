@@ -61,9 +61,9 @@ export type Ledger = {
   runImport(path: string): Promise<void>;
 
   /**
-   * Return true, if the given transaction id aka. ledger hash is known = valid.
+   * Return the latest transaction id aka. ledger hash.
    */
-  validHash(hash?: string, inMemory?: InMemory): Promise<boolean>;
+  latestHash(inMemory?: InMemory): Promise<string | undefined>;
 
   /**
    * Return a hash that reflects the current state of the blockchain data (like a git commit hash).
