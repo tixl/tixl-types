@@ -35,6 +35,11 @@ export type Storage = {
   findTransaction(hash?: string, db?: any): Promise<Transaction[]>;
 
   /**
+   * Delete blocks that are no leaf blocks.
+   */
+  removeHistoryBlocks(db?: any): Promise<void>;
+
+  /**
    * Return all send blocks that are not referenced by receive blocks.
    */
   findUnusedSendBlocks(): Promise<Block[]>;
