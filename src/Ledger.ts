@@ -69,4 +69,9 @@ export type Ledger = {
    * Return a hash that reflects the current state of the blockchain data (like a git commit hash).
    */
   hash(inMemory?: InMemory): Promise<string>;
+
+  /**
+   * Delete all blocks that are not leaf blocks.
+   */
+  prune(): Promise<void>;
 };
