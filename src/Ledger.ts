@@ -56,6 +56,12 @@ export type Ledger = {
   createExport(networkApprovalTime: number, path: string): Promise<void>;
 
   /**
+   * Export disk content to a file path. Includes all blockchains and their leaf blocks.
+   * Generates a .sqlite file at the given path.
+   */
+  createLeafExport(networkApprovalTime: number, path: string): Promise<void>;
+
+  /**
    * Import the given sqlite file into the ledger storage.
    */
   runImport(path: string): Promise<void>;

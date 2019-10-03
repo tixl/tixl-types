@@ -63,6 +63,12 @@ export type Storage = {
   createExport(db?: any, exportPath?: string, timestamp?: number): Promise<void>;
 
   /**
+   * Create a export file with blocks and blockchains.
+   * Includes all blockchains and their leaf blocks.
+   */
+  createLeafExport(db?: any, exportPath?: string, timestamp?: number): Promise<void>;
+
+  /**
    * Copy blocks and blockchains from a sqlite file into the ledger.
    */
   runImport(filePath: string, db?: any): Promise<void>;
