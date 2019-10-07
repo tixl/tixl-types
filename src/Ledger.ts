@@ -67,9 +67,9 @@ export type Ledger = {
   runImport(path: string): Promise<void>;
 
   /**
-   * Return the latest transaction id aka. ledger hash.
+   * Return the latest transaction.
    */
-  latestHash(inMemory?: InMemory): Promise<string | undefined>;
+  latestTx(inMemory?: InMemory): Promise<Transaction | undefined>;
 
   /**
    * Return a hash that reflects the current state of the blockchain data (like a git commit hash).
