@@ -20,13 +20,13 @@ export const TOTAL_TIXL_SUPPLY = 900000000000;
  * If a wallet implementation sees `1234567` as a block balance. They can calculate the actual
  * TXL value to be `0.1234567`. As this will be the result of `1234567 / 10000000`.
  */
-export const TIXL_DIVISOR = 10000000;
+export const TIXL_DIVISOR: bigint = 10000000n;
 
 /**
  * The maximum value of block fields for TXL amounts or balances.
  * Beware that this number is above the Number.MAX_SAFE_INTEGER!
  */
-export const MAX_TIXL_VALUE = 900000000000 * TIXL_DIVISOR;
+export const MAX_TIXL_VALUE: bigint = 900000000000n * TIXL_DIVISOR;
 
 export type Ledger = {
   /**
