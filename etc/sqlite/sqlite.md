@@ -6,7 +6,7 @@
 
 | Field | Flags | Description |
 | --- | --- | --- |
-| id | PK, unique, not null | **VARCHAR(64)** sha256 of public_key  |
+| id | PK, unique, not null | **VARCHAR(64)** hash of the public_key  |
 | public_key | unique, not null | **TEXT** encryption key (NTRU public) |
 | leaf_id | FK -> blocks.id, unique | **VARCHAR(64)** block id |
 
@@ -14,7 +14,7 @@
 
 | Field | Flags | Description |
 | --- | --- | --- |
-| id | PK, unique, not null | **VARCHAR(64)** sha256 of signature  |
+| id | PK, unique, not null | **VARCHAR(64)** hash of the signature  |
 | chain_id | FK -> blockchains.id, not null | **VARCHAR(64)** blockchain id |
 | transaction_id | FK -> transactions.id | **VARCHAR(64)** transaction id |
 | type | not null | **TEXT** block enum type |
@@ -36,5 +36,5 @@
 
 | Field | Flags | Description |
 | --- | --- | --- |
-| id | PK, unique, not null | **VARCHAR(64)** sha256 signature |
+| id | PK, unique, not null | **VARCHAR(64)** hash of a signature |
 | created_at | not null | **INTEGER** unix time of network approval |
