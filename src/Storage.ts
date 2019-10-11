@@ -32,6 +32,7 @@ export type Storage = {
   findPk(publicKey: SigPublicKey, db?: any): Promise<SigPublicKey | undefined>;
   findSignatures(signatures: Signature[], publicKey?: SigPublicKey, db?: any): Promise<Signature[]>;
   findPrevSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
+  findRefSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
   findTransaction(hash?: string, db?: any): Promise<Transaction[]>;
 
   /**
