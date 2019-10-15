@@ -44,5 +44,5 @@ export type Block = {
   senderAmount: EncryptedNumber;
 
   getDataForSignature(): SignatureData;
-  setAmount(amount: number, balance: number, prev: Block): void;
+  setAmount(amount: string | number | bigint, balance: string | number | bigint, prev?: Block, ref?: Block): void;
 };
