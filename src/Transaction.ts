@@ -22,6 +22,11 @@ export type Transaction = {
   networkApprovalAt?: number;
 
   /**
+   * Network slot when the transaction was accepted.
+   */
+  slot?: number;
+
+  /**
    * Return true if transaction wants to write an opening block.
    */
   containsOpeningBlock(): boolean;
