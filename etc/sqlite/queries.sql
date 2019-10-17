@@ -4,7 +4,8 @@ PRAGMA foreign_keys = ON;
 -- tables
 CREATE TABLE IF NOT EXISTS transactions (
   id VARCHAR(64) UNIQUE PRIMARY KEY NOT NULL,
-  created_at INTEGER NOT NULL
+  created_at INTEGER NOT NULL,
+  slot INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS blockchains (

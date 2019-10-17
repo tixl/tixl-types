@@ -38,5 +38,4 @@
 | ---------- | -------------------- | --------------------------------------------------------- |
 | id         | PK, unique, not null | **VARCHAR(64)** ledger hash after inserting the tx blocks |
 | created_at | not null             | **INTEGER** unix time of network approval                 |
-
-
+| slot       | not null             | **INTEGER** network slot                                  |
