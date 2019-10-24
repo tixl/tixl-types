@@ -13,8 +13,54 @@ git submodule update
 
 See [schema definition file](./etc/sqlite/sqlite.md).
 
-## TXL address
+## Tixl keys
 
-The TXL address consists of the NTRU public key. It is encoded in base64. Let's see an example address: 
+There are several keys used with the Tixl DAG to encrypt block data:
 
-> AQMAAhDM30jOV7brHOsvy48q2MPqEUPA1JskavwSz9cAxuVHIE4XPBkacJhAJvu3ZHBBPI4as6mbD9XVVxFApYwxrxZ782T4mQjWsNSzZI6u8Lo5EsCgug/EV6GsM7P1gaHZWzNyYv4jFVMk+/RflMtyNT7G8nc5mV5zxUhvMeB2+tTFeg1xdQ/dHBCfkeEzWmmxzPKCQR+qQ2wiHExXlWflOe+a+qE4gMfxl2YbylgPEi/WrpLJd3wzgHt904dNTtqexmV8pkeWmR+oB80PK+Gsy+jI6cZiGTRQAfOw0bF8bxbXrspNLasIEXMht7DyzvCACapi20+QGnYQACtFfmDi1YdhimhX95PUeVGbpDvgOKp3SEisDZSFpL5GySfa661HZSM5F/YNuLVCaHbB8ZLhZcHNjqV8RErY/ED7Wb2WNM8PqgLyNsIeSh5s/pU9kmZi/tbI7JbFEo1KCRIel78rs1VDPmgF9L9ujwnd4q/81s94i2Jbs7G5WBHkSdkR150KSIdziIpTyMCdd1wWCg44YMoQfFbLQJ001QCjWQG8k7IdL2x21bELaRU+Ox6zHG0P1PTeyoon4dkxsc0Qyl7LMA2uJTMbae1VDfkMZl7s57b0Euj17v3aNnVm7HzZ1tx7abL6z1yVeCxwU9SME8n6dnCrsXdvT9w3+hNRNPQjVPf3Kynn4j4aA6gw8q5Y4MXTs/Vl+R7oanJCRRGwqMcTl1wO+K/lvkotvSA=
+* Private AES key to encrypt block data
+
+* Public and private Signature keys to sign blocks
+
+* Public and private NTRU keys to encrypt certain block fields
+
+
+
+Usage of the private AES key
+
+- Encrypt keys on the opening block for the accountchain
+
+- Encrypt keys on the opening block for other stealthchains
+
+- Encrypt block fields for the sender
+
+
+
+Usage of the signature keys
+
+- The private key is used to sign blocks on the blockchain it belongs to (accountchains and stealthchains)
+
+- One keypair belongs to one blockchain
+
+- The public key is send along a transaction
+
+- The public key is used to query for a blockchain
+
+
+
+Usage of the NTRU keys
+
+* One keypair is used per wallet for all the related blockchains
+
+* Encrypt send block fields for the receiver
+
+
+
+## Tixl address
+
+The TXL address is the public signature key of the accountchain. It is encoded in base58. Let's see an example address: 
+
+> jw7Vy1RFstxS3VwYxEYepdUSP25TTdb8bst2afTC7onp
+
+
+
+A wallet might lookup the corresponding NTRU public key to send funds to this address.
