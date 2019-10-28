@@ -23,8 +23,6 @@ There are several keys used with the Tixl DAG to encrypt block data:
 
 * Public and private NTRU keys to encrypt certain block fields
 
-
-
 Usage of the private AES key
 
 - Encrypt keys on the opening block for the accountchain
@@ -32,8 +30,6 @@ Usage of the private AES key
 - Encrypt keys on the opening block for other stealthchains
 
 - Encrypt block fields for the sender
-
-
 
 Usage of the signature keys
 
@@ -43,9 +39,7 @@ Usage of the signature keys
 
 - The public key is send along a transaction
 
-- The public key is used to query for a blockchain
-
-
+- The public key is used to query for a blockchain (therefor it is the blockchain address)
 
 Usage of the NTRU keys
 
@@ -53,14 +47,10 @@ Usage of the NTRU keys
 
 * Encrypt send block fields for the receiver
 
-
-
 ## Tixl address
 
 The TXL address is the public signature key of the accountchain. It is encoded in base58. Let's see an example address: 
 
 > jw7Vy1RFstxS3VwYxEYepdUSP25TTdb8bst2afTC7onp
-
-
 
 A wallet might lookup the corresponding NTRU public key to send funds to this address.
