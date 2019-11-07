@@ -15,6 +15,7 @@
 | Field                           | Flags                          | Description                                                        |
 | ------------------------------- | ------------------------------ | ------------------------------------------------------------------ |
 | id                              | PK, unique, not null           | **VARCHAR(64)** hash of the signature                              |
+| created_at                      | -                              | **INTEGER** time of insert in milliseconds since 1.1.1970          |
 | chain_id                        | FK -> blockchains.id, not null | **VARCHAR(64)** blockchain id                                      |
 | transaction_id                  | FK -> transactions.id          | **VARCHAR(64)** transaction id                                     |
 | type                            | not null                       | **TEXT** block enum type                                           |

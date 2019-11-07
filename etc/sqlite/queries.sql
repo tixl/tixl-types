@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS blocks (
   sender_blinding_factor_balance TEXT,
   sender_balance TEXT,
   sender_amount TEXT,
+  created_at INTEGER,
   FOREIGN KEY (chain_id) REFERENCES blockchains(id),
   FOREIGN KEY (transaction_id) REFERENCES transactions(id),
   FOREIGN KEY (prev) REFERENCES blocks(signature),
