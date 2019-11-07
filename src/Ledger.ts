@@ -56,7 +56,7 @@ export type Ledger = {
   getLeafBlocks(): Promise<Block[]>;
 
   /**
-   * Return all unclaimed send blocks.
+   * Return the latest (n=20) unclaimed send blocks.
    */
   getSendBlocksWithoutReceive(): Promise<Block[]>;
 

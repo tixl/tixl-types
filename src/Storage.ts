@@ -41,9 +41,9 @@ export type Storage = {
   removeHistoryBlocks(db?: any): Promise<void>;
 
   /**
-   * Return all send blocks that are not referenced by receive blocks.
+   * Return all send blocks that are not referenced by receive blocks. Default limit is 20.
    */
-  findUnusedSendBlocks(): Promise<Block[]>;
+  findUnusedSendBlocks(limit?: number): Promise<Block[]>;
 
   /**
    * Run as transaction.
