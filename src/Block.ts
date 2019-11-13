@@ -1,11 +1,12 @@
 import { StorageId } from './Blockchain';
+import { NTRUPublicKey } from './Keys';
 
 export type EncryptedNumber = string;
 export type EncryptedString = string;
 export type Signature = string;
 export type SignatureData = {
   type: string;
-  prev: string | null;
+  prev: string | undefined;
   payload: string;
   amountCommitment: string;
   balanceCommitment: string;
@@ -30,9 +31,9 @@ export type Block = {
   txId: StorageId;
   signature: Signature;
   type: BlockType;
-  prev: Signature | null;
+  prev: Signature | undefined;
   payload: EncryptedString;
-  refBlock: Signature | null;
+  refBlock: Signature | undefined;
   amountCommitment: string;
   balanceCommitment: string;
   amountRangeProof: string;
@@ -42,6 +43,7 @@ export type Block = {
   senderBlindingFactorBalance: EncryptedString;
   senderBalance: EncryptedNumber;
   senderAmount: EncryptedNumber;
+  publicNtruKey: NTRUPublicKey | undefined;
 
   getDataForSignature(): SignatureData;
   setAmount(amount: string | number | bigint, balance: string | number | bigint, prev?: Block, ref?: Block): void;
