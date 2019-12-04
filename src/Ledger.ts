@@ -43,7 +43,7 @@ export type Ledger = {
   /**
    * Returns a blockchain identified by its public key.
    */
-  getBlockchain(key: SigPublicKey, full: boolean): Promise<Blockchain | undefined>;
+  getBlockchain(key: SigPublicKey, full?: boolean): Promise<Blockchain | undefined>;
 
   /**
    * Return blocks identified by the given signatures.
