@@ -26,7 +26,7 @@ export type Storage = {
    */
   persistTx(txs: Transaction[], db?: any): Promise<Transaction[]>;
 
-  findBlockchain(publicKey: SigPublicKey, db?: any): Promise<Blockchain | undefined>;
+  findBlockchain(publicKey: SigPublicKey, db?: any, full?: boolean): Promise<Blockchain | undefined>;
   findLeafBlocks(publicKey?: SigPublicKey, db?: any): Promise<Block[]>;
   findBlocks(signatures: Signature[], publicKey?: SigPublicKey, db?: any): Promise<Block[]>;
   findPk(publicKey: SigPublicKey, db?: any): Promise<SigPublicKey | undefined>;
