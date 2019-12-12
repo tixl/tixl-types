@@ -44,7 +44,7 @@ export type Storage = {
   /**
    * Return all send blocks that are not referenced by receive blocks. Default limit is 20.
    */
-  findUnusedSendBlocks(limit?: number): Promise<Block[]>;
+  findUnusedSendBlocks(fromTimestamp?: number, toTimestamp?: number, limit?: number): Promise<Block[]>;
 
   /**
    * Run as transaction.
