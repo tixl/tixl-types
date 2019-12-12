@@ -56,9 +56,10 @@ export type Ledger = {
   getLeafBlocks(): Promise<Block[]>;
 
   /**
-   * Return the latest (n=20) unclaimed send blocks.
+   * Return the latest (n=20) unclaimed send blocks starting from a timestamp to a timestamp.
+   * Per default the latest blocks from now on are returned.
    */
-  getSendBlocksWithoutReceive(): Promise<Block[]>;
+  getSendBlocksWithoutReceive(fromTimestamp?: number, toTimestamp?: number): Promise<Block[]>;
 
   /**
    * Return a NTRU public key for a blockchain signature key.
