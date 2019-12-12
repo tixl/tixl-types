@@ -1,5 +1,5 @@
 import { Block, Signature } from './Block';
-import { Blockchain } from './Blockchain';
+import { Blockchain, BlockchainInfo } from './Blockchain';
 import { SigPublicKey, NTRUPublicKey } from './Keys';
 import { Transaction } from './Transaction';
 import { InMemory } from './Storage';
@@ -64,6 +64,11 @@ export type Ledger = {
    * Return a NTRU public key for a blockchain signature key.
    */
   getNtruBySig(key: SigPublicKey): Promise<NTRUPublicKey | undefined>;
+
+  /**
+   * Return information about the blockchain that contains this block signature.
+   */
+  getBlockchainInfo(blockSig: Signature): Promise<BlockchainInfo | undefined>;
 
   /**
    * Create and return an in-memory state.

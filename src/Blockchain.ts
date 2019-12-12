@@ -13,3 +13,8 @@ export type Blockchain = {
   addBlock(block: Block): void;
   leaf(): Block | undefined;
 };
+
+export type BlockchainInfo = {
+  publicSig: SigPublicKey;
+  publicNtru: NTRUPublicKey | undefined;
+};

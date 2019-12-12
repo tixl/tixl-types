@@ -1,5 +1,5 @@
 import { Block, Signature } from './Block';
-import { Blockchain } from './Blockchain';
+import { Blockchain, BlockchainInfo } from './Blockchain';
 import { SigPublicKey } from './Keys';
 import { Transaction } from './Transaction';
 
@@ -34,6 +34,7 @@ export type Storage = {
   findPrevSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
   findRefSignatures(signatures: Signature[], db?: any): Promise<Signature[]>;
   findTransaction(hash?: string, db?: any): Promise<Transaction[]>;
+  findBlockchainInfo(signature: Signature): Promise<BlockchainInfo | undefined>;
 
   /**
    * Delete blocks that are no leaf blocks.
