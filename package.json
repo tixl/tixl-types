@@ -1,6 +1,6 @@
 {
   "name": "@tixl/tixl-types",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "repository": "git@github.com:tixl/tixl-types.git",
   "license": "MIT",
   "files": [
