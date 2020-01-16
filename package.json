@@ -1,9 +1,11 @@
 {
   "name": "@tixl/tixl-types",
   "version": "0.1.0",
-  "private": true,
   "repository": "git@github.com:tixl/tixl-types.git",
   "license": "MIT",
+  "files": [
+    "src"
+  ],
   "devDependencies": {
     "prettier": "1.18.2"
   }
