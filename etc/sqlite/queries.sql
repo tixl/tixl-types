@@ -40,13 +40,3 @@ CREATE TABLE IF NOT EXISTS blocks (
   FOREIGN KEY (prev) REFERENCES blocks(signature),
   FOREIGN KEY (ref_block) REFERENCES blocks(signature)
 );
-
--- example queries
-INSERT INTO blockchains (id, public_key) VALUES (?,?)
-INSERT INTO blocks (id, chain_id, type, signature) VALUES (?,?,?,?)
-
--- select data query
-SELECT * from blocks WHERE signature IN (?)
-
--- update leaf query
-UPDATE blockchains SET leaf_id = ? WHERE id = ?
