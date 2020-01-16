@@ -1,11 +1,16 @@
 {
   "name": "@tixl/tixl-types",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "repository": "git@github.com:tixl/tixl-types.git",
-  "license": "MIT",
+  "scripts": {
+    "build": "exit 0"
+  },
   "files": [
-    "src"
+    "**/*.ts"
   ],
+  "peerDependencies": {
+    "jsbi": "3.1.1"
+  },
   "devDependencies": {
     "prettier": "1.18.2"
   }
