@@ -130,3 +130,23 @@ export function fromBlockObject(obj: any) {
 
   return block;
 }
+
+export type CommitmentData = {
+  type: string;
+  amount: string | number | bigint;
+  balance: string | number | bigint;
+};
+
+export type BlockValues = {
+  amount: string | number | bigint;
+  balance: string | number | bigint;
+};
+
+export type BlockCommitments = {
+  balanceCommitment: any;
+  amountCommitment: any;
+  amountRangeProof: any;
+  balanceRangeProof: any;
+  balanceCommitmentBlindFactor: any;
+  amountCommitmentBlindFactor: any;
+};
