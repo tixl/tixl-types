@@ -1,14 +1,6 @@
 # Tixl types
 
-If a project uses tixl-types, you have to initialize it accordingly (see https://git-scm.com/book/en/v2/Git-Tools-Submodules).
-
-In the project working directory run
-
 ```
-git submodule init
-git submodule update
-```
-
 ## SQLite schema
 
 See [schema definition file](./etc/sqlite/sqlite.md).
@@ -49,7 +41,7 @@ Usage of the NTRU keys
 
 ## Tixl address
 
-The TXL address is the public signature key of the accountchain. It is encoded in base58. Let's see an example address: 
+The TXL address is the public signature key of the accountchain. It is encoded in base58. Let's see an example address:
 
 > jw7Vy1RFstxS3VwYxEYepdUSP25TTdb8bst2afTC7onp
 
