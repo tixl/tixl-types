@@ -2,11 +2,6 @@ import { Block, fromBlockObject } from './Block';
 import { SigPublicKey, NTRUPublicKey } from './Keys';
 import { StorageId } from './Storage';
 
-export type BlockchainInfo = {
-  publicSig: SigPublicKey;
-  publicNtru: NTRUPublicKey | undefined;
-};
-
 export class Blockchain {
   id: StorageId;
   leafId: StorageId | undefined;
