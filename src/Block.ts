@@ -127,6 +127,7 @@ export function fromBlockObject(obj: any) {
   block.senderBlindingFactorBalance = obj.senderBlindingFactorBalance;
   block.senderBalance = obj.senderBalance;
   block.senderAmount = obj.senderAmount;
+  block.publicNtruKey = obj.publicNtruKey;
 
   return block;
 }
