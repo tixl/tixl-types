@@ -1,5 +1,5 @@
 import { Block, BlockType } from './Block';
-import { SigPublicKey } from './Keys';
+import { SigPublicKey, NTRUPublicKey } from './Keys';
 import { StorageId } from './Storage';
 
 export class Transaction {
@@ -7,9 +7,9 @@ export class Transaction {
   blocks: Block[] = [];
 
   /**
-   * Is always the public key of the related block chain.
+   * Is always the public signature key of the related blockchain.
    */
-  publicKey: SigPublicKey;
+  publicSig: SigPublicKey;
 
   /**
    * Proof that a certain amount of work was burned.
