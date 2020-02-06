@@ -1,4 +1,4 @@
-import { Block, fromBlockObject } from './Block';
+import { Block, fromBlockObject, BlockType } from './Block';
 import { SigPublicKey, NTRUPublicKey } from './Keys';
 import { StorageId } from './Storage';
 
@@ -21,6 +21,14 @@ export class Blockchain {
   leaf(): Block | undefined {
     const prevs = this.blocks.map(block => block.prev).filter(prev => !!prev);
     return this.blocks.find(block => prevs.indexOf(block.signature) === -1);
+  }
+
+  openingBlock(): Block | undefined {
+    if (!Array.isArray(this.blocks)) {
+      return;
+    }
+
+    return this.blocks.filter(block => block.type === BlockType.OPENING && !block.prev).pop();
   }
 }
 
