@@ -23,6 +23,8 @@ export enum BlockType {
   OPENING = 'OPENING',
   RECEIVE = 'RECEIVE',
   SEND = 'SEND',
+  DEPOSIT = 'DEPOSIT',
+  WITHDRAWAL = 'WITHDRAWAL',
 }
 
 export class Block {
@@ -34,6 +36,7 @@ export class Block {
   prev: string | undefined;
   payload: string;
   refBlock: string | undefined;
+  refAsset: string | undefined;
   createdAt: number;
   amountCommitment: string;
   balanceCommitment: string;
