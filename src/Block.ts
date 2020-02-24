@@ -17,6 +17,8 @@ export type SignatureData = {
   senderBlindingFactorBalance: string;
   senderBalance: string;
   senderAmount: string;
+  refBlock: string | undefined;
+  refAsset: string | undefined;
 };
 
 export enum BlockType {
@@ -63,6 +65,8 @@ export class Block {
       senderBlindingFactorBalance,
       senderBalance,
       senderAmount,
+      refBlock,
+      refAsset,
     } = this;
 
     return {
@@ -78,10 +82,12 @@ export class Block {
       senderBlindingFactorBalance,
       senderBalance,
       senderAmount,
+      refBlock,
+      refAsset,
     };
   }
 
-  setAmount(amount: string | number | bigint, balance: string | number | bigint, prev?: Block, ref?: Block) {
+  setAmount(amount: string | number | bigint, balance: string | number | bigint, prev?: Block) {
     if (typeof amount === 'string' && amount.indexOf('.') >= 0) {
       console.error('There may be an issue with the amount fraction on the caller side (see Ledger.TIXL_DIVISOR).');
       throw new Error('Decimals as the amount are not allowed on a block.');
@@ -120,6 +126,7 @@ export function fromBlockObject(obj: any) {
   block.prev = obj.prev;
   block.payload = obj.payload;
   block.refBlock = obj.refBlock;
+  block.refAsset = obj.refAsset;
   block.createdAt = obj.createdAt;
   block.amountCommitment = obj.amountCommitment;
   block.balanceCommitment = obj.balanceCommitment;
