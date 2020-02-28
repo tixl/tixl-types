@@ -4,12 +4,13 @@
 
 ### blockchains
 
-| Field       | Flags                   | Description                                  |
-| ----------- | ----------------------- | -------------------------------------------- |
-| id          | PK, unique, not null    | **VARCHAR(64)** hash of the public_key field |
-| public_key  | unique, not null        | **TEXT** signature public key                |
-| leaf_id     | FK -> blocks.id, unique | **VARCHAR(64)** block id                     |
-| public_ntru | unique                  | **TEXT** ntru public key                     |
+| Field        | Flags                   | Description                                  |
+| ------------ | ----------------------- | -------------------------------------------- |
+| id           | PK, unique, not null    | **VARCHAR(64)** hash of the public_key field |
+| public_key   | unique, not null        | **TEXT** signature public key                |
+| leaf_id      | FK -> blocks.id, unique | **VARCHAR(64)** block id                     |
+| public_ntru  | unique                  | **TEXT** ntru public key                     |
+| asset_symbol |                         | **TEXT** asset symbol, e.g. TXL or BTC       |
 
 ### blocks
 

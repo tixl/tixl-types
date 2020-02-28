@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS blockchains (
   id VARCHAR(64) UNIQUE PRIMARY KEY NOT NULL,
   public_key TEXT UNIQUE NOT NULL,
   public_ntru TEXT UNIQUE,
+  asset_symbol TEXT,
   leaf_id VARCHAR(64) UNIQUE,
   FOREIGN KEY (leaf_id) REFERENCES blocks(id)
 );

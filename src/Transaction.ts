@@ -1,6 +1,7 @@
 import { Block, BlockType } from './Block';
 import { SigPublicKey, NTRUPublicKey } from './Keys';
 import { StorageId } from './Storage';
+import { AssetSymbol } from './Blockchain';
 
 export class Transaction {
   id: StorageId;
@@ -25,6 +26,11 @@ export class Transaction {
    * Unix timestamp when the tx was accepted.
    */
   networkApprovalAt?: number;
+
+  /**
+   * Explicitly use this asset.
+   */
+  assetSymbol?: AssetSymbol;
 
   /**
    * Return true if transaction wants to write an opening block.
