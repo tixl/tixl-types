@@ -7,6 +7,10 @@ export class Transaction {
   id: StorageId;
   blocks: Block[] = [];
 
+  constructor(symbol?: AssetSymbol) {
+    this.assetSymbol = symbol || AssetSymbol.TXL;
+  }
+
   /**
    * Is always the public signature key of the related blockchain.
    */
@@ -30,10 +34,10 @@ export class Transaction {
   /**
    * Explicitly use this asset.
    */
-  assetSymbol?: AssetSymbol;
+  assetSymbol: AssetSymbol;
 
   /**
-   * Return true if transaction wants to write an opening block.
+   * Return true if transaction wants to create a new blockchain.
    */
   containsOpeningBlock(): boolean {
     if (!Array.isArray(this.blocks)) {
