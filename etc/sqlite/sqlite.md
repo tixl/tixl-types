@@ -25,6 +25,8 @@
 | signature                       | unique, not null               | **TEXT** own block signature                                       |
 | payload                         | -                              | **TEXT** encrypted arbitrary data that is stored on the blockchain |
 | ref_block                       | FK -> blocks.signature         | **TEXT** signature reference to a block of another chain           |
+| ref_asset                       | -                              | TEXT reference for digital assets                                  |
+| claim_signature                 | -                              | TEXT only used in asset blocks                                     |
 | commitment_amount               | -                              | **TEXT** pedersen amount commitment                                |
 | commitment_balance              | -                              | **TEXT** pedersen balance commitment                               |
 | receiver_amount                 | -                              | **TEXT** encrypted amount for the receiving party                  |

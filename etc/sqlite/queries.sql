@@ -26,6 +26,8 @@ CREATE TABLE IF NOT EXISTS blocks (
   signature TEXT UNIQUE NOT NULL,
   payload TEXT,
   ref_block TEXT,
+  ref_asset TEXT,
+  claim_signature TEXT,
   commitment_amount TEXT,
   commitment_balance TEXT,
   rangeproof_amount TEXT,

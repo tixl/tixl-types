@@ -19,6 +19,7 @@ export type SignatureData = {
   senderAmount: string;
   refBlock: string | undefined;
   refAsset: string | undefined;
+  claimSignature: string | undefined;
 };
 
 export enum BlockType {
@@ -39,6 +40,7 @@ export class Block {
   payload: string;
   refBlock: string | undefined;
   refAsset: string | undefined;
+  claimSignature: string | undefined;
   createdAt: number;
   amountCommitment: string;
   balanceCommitment: string;
@@ -67,6 +69,7 @@ export class Block {
       senderAmount,
       refBlock,
       refAsset,
+      claimSignature,
     } = this;
 
     return {
@@ -84,6 +87,7 @@ export class Block {
       senderAmount,
       refBlock,
       refAsset,
+      claimSignature,
     };
   }
 
@@ -127,6 +131,7 @@ export function fromBlockObject(obj: any) {
   block.payload = obj.payload;
   block.refBlock = obj.refBlock;
   block.refAsset = obj.refAsset;
+  block.claimSignature = obj.claimSignature;
   block.createdAt = obj.createdAt;
   block.amountCommitment = obj.amountCommitment;
   block.balanceCommitment = obj.balanceCommitment;
