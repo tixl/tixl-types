@@ -1,8 +1,8 @@
-export type NTRUPrivateKey = string;
-export type NTRUPublicKey = string;
-export type SigPublicKey = string;
-export type SigPrivateKey = string;
-export type AESPrivateKey = string;
+export class NTRUPrivateKey extends String {}
+export class NTRUPublicKey extends String {}
+export class SigPublicKey extends String {}
+export class SigPrivateKey extends String {}
+export class AESPrivateKey extends String {}
 
 export type KeySet = {
   aes: AESPrivateKey;

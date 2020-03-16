@@ -21,16 +21,16 @@ export interface Crypto {
     ) => any;
   };
   aes: {
-    encrypt: (payload: string, key: any) => Promise<string>;
-    decrypt: (payload: string, key: any) => Promise<string>;
+    encrypt: (payload: string | String, key: any) => Promise<string>;
+    decrypt: (payload: string | String, key: any) => Promise<string>;
   };
   ntru: {
     keyPair: (seed: any) => Promise<any>;
-    encrypt: (payload: string, key: any) => Promise<string>;
-    decrypt: (payload: string, key: any) => Promise<string>;
+    encrypt: (payload: string | String, key: any) => Promise<string>;
+    decrypt: (payload: string | String, key: any) => Promise<string>;
   };
   base64: {
-    toBytes: (payload: string) => any;
+    toBytes: (payload: string | String) => any;
     toString: (payload: any) => string;
   };
 }

@@ -3,10 +3,12 @@ import { NTRUPublicKey } from './Keys';
 
 export type EncryptedNumber = string;
 export type EncryptedString = string;
-export type Signature = string;
+
+export class Signature extends String {}
+
 export type SignatureData = {
   type: string;
-  prev: string | undefined;
+  prev: Signature | undefined;
   payload: string;
   amountCommitment: string;
   balanceCommitment: string;
@@ -17,7 +19,7 @@ export type SignatureData = {
   senderBlindingFactorBalance: string;
   senderBalance: string;
   senderAmount: string;
-  refBlock: string | undefined;
+  refBlock: Signature | undefined;
   refAsset: string | undefined;
   claimSignature: string | undefined;
 };
@@ -34,11 +36,11 @@ export class Block {
   id: StorageId;
   chainId: StorageId;
   txId: string;
-  signature: string;
+  signature: Signature;
   type: BlockType;
-  prev: string | undefined;
+  prev: Signature | undefined;
   payload: string;
-  refBlock: string | undefined;
+  refBlock: Signature | undefined;
   refAsset: string | undefined;
   claimSignature: string | undefined;
   createdAt: number;

@@ -15,7 +15,7 @@ export class Blockchain {
   assetSymbol: AssetSymbol;
   blocks: Block[] = [];
 
-  constructor(publicSig: string, publicNtru?: string, symbol?: AssetSymbol) {
+  constructor(publicSig: SigPublicKey, publicNtru?: NTRUPublicKey, symbol?: AssetSymbol) {
     this.publicSig = publicSig;
     this.publicNtru = publicNtru;
     this.assetSymbol = symbol || AssetSymbol.TXL;

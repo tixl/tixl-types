@@ -14,6 +14,7 @@ export type BlockTx = {
   tx: Transaction;
   block: Block;
 };
+
 export type BlockchainTx = {
   tx: Transaction;
   blockchain: Blockchain;
