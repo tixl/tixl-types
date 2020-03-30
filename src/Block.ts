@@ -114,12 +114,15 @@ export class Block {
       throw new Error('Balance is too big. Please use the bigint type.');
     }
 
-    this.receiverAmount = amount.toString();
     this.senderAmount = amount.toString();
     this.senderBalance = balance.toString();
 
     if (prev) {
       this.prev = prev.signature;
+    }
+
+    if (this.type === BlockType.SEND) {
+      this.receiverAmount = amount.toString();
     }
   }
 }
