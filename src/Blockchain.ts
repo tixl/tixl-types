@@ -8,6 +8,7 @@ export enum AssetSymbol {
 }
 
 export class Blockchain {
+  __type: 'Blockchain';
   id: StorageId;
   leafId: StorageId | undefined;
   publicSig: SigPublicKey;
@@ -16,6 +17,7 @@ export class Blockchain {
   blocks: Block[] = [];
 
   constructor(publicSig: SigPublicKey, publicNtru?: NTRUPublicKey, symbol?: AssetSymbol) {
+    this.__type = 'Blockchain';
     this.publicSig = publicSig;
     this.publicNtru = publicNtru;
     this.assetSymbol = symbol || AssetSymbol.TXL;

@@ -33,6 +33,7 @@ export enum BlockType {
 }
 
 export class Block {
+  __type: 'Block';
   id: StorageId;
   chainId: StorageId;
   txId: string;
@@ -54,6 +55,12 @@ export class Block {
   senderBalance: EncryptedNumber;
   senderAmount: EncryptedNumber;
   publicNtruKey: NTRUPublicKey | undefined;
+
+  state?: string;
+
+  constructor() {
+    this.__type = 'Block';
+  }
 
   getDataForSignature(): SignatureData {
     const {
@@ -148,6 +155,7 @@ export function fromBlockObject(obj: any) {
   block.senderBalance = obj.senderBalance;
   block.senderAmount = obj.senderAmount;
   block.publicNtruKey = obj.publicNtruKey;
+  block.state = obj.state;
 
   return block;
 }

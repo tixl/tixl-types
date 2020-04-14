@@ -1,13 +1,15 @@
 import { Block, BlockType } from './Block';
-import { SigPublicKey, NTRUPublicKey } from './Keys';
+import { SigPublicKey } from './Keys';
 import { StorageId } from './Storage';
 import { AssetSymbol } from './Blockchain';
 
 export class Transaction {
+  __type: 'Transaction';
   id: StorageId;
   blocks: Block[] = [];
 
   constructor(symbol?: AssetSymbol) {
+    this.__type = 'Transaction';
     this.assetSymbol = symbol || AssetSymbol.TXL;
   }
 
