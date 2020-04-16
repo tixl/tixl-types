@@ -33,7 +33,6 @@ export enum BlockType {
 }
 
 export class Block {
-  __type: 'Block';
   id: StorageId;
   chainId: StorageId;
   txId: string;
@@ -57,10 +56,6 @@ export class Block {
   publicNtruKey: NTRUPublicKey | undefined;
 
   state?: string;
-
-  constructor() {
-    this.__type = 'Block';
-  }
 
   getDataForSignature(): SignatureData {
     const {
@@ -179,3 +174,13 @@ export type BlockCommitments = {
   balanceCommitmentBlindFactor: any;
   amountCommitmentBlindFactor: any;
 };
+
+export function isBlock(val: any): boolean {
+  if (!val) return false;
+
+  // Ducktyping: maybe extend check with more fields
+  if (!val.type) return false;
+  if (!val.senderAmount) return false;
+
+  return true;
+}

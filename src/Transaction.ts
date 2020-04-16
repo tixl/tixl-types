@@ -4,12 +4,10 @@ import { StorageId } from './Storage';
 import { AssetSymbol } from './Blockchain';
 
 export class Transaction {
-  __type: 'Transaction';
   id: StorageId;
   blocks: Block[] = [];
 
   constructor(symbol?: AssetSymbol) {
-    this.__type = 'Transaction';
     this.assetSymbol = symbol || AssetSymbol.TXL;
   }
 

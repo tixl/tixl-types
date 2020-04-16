@@ -8,7 +8,6 @@ export enum AssetSymbol {
 }
 
 export class Blockchain {
-  __type: 'Blockchain';
   id: StorageId;
   leafId: StorageId | undefined;
   publicSig: SigPublicKey;
@@ -17,7 +16,6 @@ export class Blockchain {
   blocks: Block[] = [];
 
   constructor(publicSig: SigPublicKey, publicNtru?: NTRUPublicKey, symbol?: AssetSymbol) {
-    this.__type = 'Blockchain';
     this.publicSig = publicSig;
     this.publicNtru = publicNtru;
     this.assetSymbol = symbol || AssetSymbol.TXL;
@@ -50,4 +48,26 @@ export function fromBlockchainObject(obj: any) {
 
 export function deserializeBlock(block: object): Block {
   return fromBlockObject(block);
+}
+
+export function isBlockchain(val: any): boolean {
+  if (!val) return false;
+
+  // Ducktyping: maybe extend check with more fields
+  return Array.isArray(val.blocks);
+}
+
+export function isBlockchainRecord(val: any): boolean {
+  if (!val) return false;
+
+  const fields = Object.getOwnPropertyNames(val);
+
+  // an empty record is a valid record..
+  if (fields.length === 0) return true;
+
+  // test the first object if it is a blockchain
+  // if so the val behaves like a Record<string, Blockchain>
+  const testFirstChain = fields[0];
+
+  return isBlockchain(val[testFirstChain]);
 }
