@@ -21,7 +21,7 @@ export type BlockchainTx = {
 };
 
 export type MultiTx = {
-  type: 'MULTI';
+  isMulti: true;
   transactions: Transaction[];
 };
 
