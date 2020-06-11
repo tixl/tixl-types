@@ -19,3 +19,10 @@ export type BlockchainTx = {
   tx: Transaction;
   blockchain: Blockchain;
 };
+
+export type MultiTx = {
+  type: 'MULTI';
+  transactions: Transaction[];
+};
+
+export type TxOrMultiTx = Transaction | MultiTx;
