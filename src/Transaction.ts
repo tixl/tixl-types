@@ -4,7 +4,6 @@ import { StorageId } from './Storage';
 import { AssetSymbol } from './Blockchain';
 
 export class Transaction {
-  isMulti?: false;
   id: StorageId;
   blocks: Block[] = [];
 
