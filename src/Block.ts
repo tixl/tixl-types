@@ -1,5 +1,4 @@
 import { StorageId } from './Storage';
-import { AssetSymbol } from './Blockchain';
 
 export type EncryptedNumber = string;
 export type EncryptedString = string;
@@ -14,6 +13,7 @@ export type SignatureData = {
   refBlock: Signature | undefined;
   refAsset: string | undefined;
   claimSignature: string | undefined;
+  payload: string | undefined;
 };
 
 export enum BlockType {
@@ -35,6 +35,7 @@ export class Block {
   refBlock: Signature | undefined;
   refAsset: string | undefined;
   claimSignature: string | undefined;
+  payload: string | undefined;
   createdAt: number;
   senderBalance: EncryptedNumber;
   senderAmount: EncryptedNumber;
@@ -42,7 +43,7 @@ export class Block {
   state?: string;
 
   getDataForSignature(): SignatureData {
-    const { type, prev, senderBalance, senderAmount, refBlock, refAsset, claimSignature } = this;
+    const { type, prev, senderBalance, senderAmount, refBlock, refAsset, claimSignature, payload } = this;
 
     return {
       type,
@@ -52,6 +53,7 @@ export class Block {
       refBlock,
       refAsset,
       claimSignature,
+      payload,
     };
   }
 
@@ -98,6 +100,7 @@ export function fromBlockObject(obj: any) {
   block.senderBalance = obj.senderBalance;
   block.senderAmount = obj.senderAmount;
   block.state = obj.state;
+  block.payload = obj.payload;
 
   return block;
 }

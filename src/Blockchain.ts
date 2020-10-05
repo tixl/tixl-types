@@ -26,14 +26,14 @@ export class Blockchain {
 
     // index points to next blocks
     // you can look up which blocks points to a signature
-    this.blocks.forEach(block => {
+    this.blocks.forEach((block) => {
       // only interested in asset blocks
       if (block.type !== BlockType.ASSET) return;
 
       prevIndex[block.prev as string] = block;
     });
 
-    const anyAssetBlock = this.blocks.find(block => block.type === BlockType.ASSET);
+    const anyAssetBlock = this.blocks.find((block) => block.type === BlockType.ASSET);
 
     if (!anyAssetBlock) {
       // chains without assets block may have just one or zero blocks
@@ -48,14 +48,14 @@ export class Blockchain {
 
     // index points to next blocks
     // you can look up which blocks points to a signature
-    this.blocks.forEach(block => {
+    this.blocks.forEach((block) => {
       // not interested in asset blocks
       if (block.type === BlockType.ASSET) return;
 
       prevIndex[block.prev as string] = block;
     });
 
-    const assetBlock = this.blocks.find(block => block.type === BlockType.ASSET && block.refAsset === asset);
+    const assetBlock = this.blocks.find((block) => block.type === BlockType.ASSET && block.refAsset === asset);
 
     // chain has no asset created yet
     if (!assetBlock) return;
@@ -68,7 +68,7 @@ export class Blockchain {
       return;
     }
 
-    return this.blocks.filter(block => block.type === BlockType.OPENING && !block.prev).pop();
+    return this.blocks.filter((block) => block.type === BlockType.OPENING && !block.prev).pop();
   }
 }
 
