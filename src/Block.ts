@@ -1,3 +1,4 @@
+import { SigPublicKey } from './Keys';
 import { StorageId } from './Storage';
 
 export type EncryptedNumber = string;
@@ -12,6 +13,7 @@ export type SignatureData = {
   senderAmount: string;
   refBlock: Signature | undefined;
   refAsset: string | undefined;
+  refAddress: SigPublicKey | undefined;
   claimSignature: string | undefined;
   payload: string | undefined;
 };
@@ -34,6 +36,7 @@ export class Block {
   prev: Signature | undefined;
   refBlock: Signature | undefined;
   refAsset: string | undefined;
+  refAddress: SigPublicKey | undefined;
   claimSignature: string | undefined;
   payload: string | undefined;
   createdAt: number;
@@ -43,7 +46,7 @@ export class Block {
   state?: string;
 
   getDataForSignature(): SignatureData {
-    const { type, prev, senderBalance, senderAmount, refBlock, refAsset, claimSignature, payload } = this;
+    const { type, prev, senderBalance, senderAmount, refBlock, refAsset, refAddress, claimSignature, payload } = this;
 
     return {
       type,
@@ -52,6 +55,7 @@ export class Block {
       senderAmount,
       refBlock,
       refAsset,
+      refAddress,
       claimSignature,
       payload,
     };
