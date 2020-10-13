@@ -1,3 +1,4 @@
+import { AssetSymbol } from './Blockchain';
 import { SigPublicKey } from './Keys';
 import { StorageId } from './Storage';
 
@@ -9,6 +10,7 @@ export class Signature extends String {}
 export type SignatureData = {
   type: string;
   prev: Signature | undefined;
+  symbol: AssetSymbol | undefined;
   senderBalance: string;
   senderAmount: string;
   refBlock: Signature | undefined;
@@ -33,6 +35,7 @@ export class Block {
   txId: string;
   signature: Signature;
   type: BlockType;
+  symbol: AssetSymbol | undefined;
   prev: Signature | undefined;
   refBlock: Signature | undefined;
   refAsset: string | undefined;
@@ -46,11 +49,12 @@ export class Block {
   state?: string;
 
   getDataForSignature(): SignatureData {
-    const { type, prev, senderBalance, senderAmount, refBlock, refAsset, refAddress, claimSignature, payload } = this;
+    const { type, prev, symbol, senderBalance, senderAmount, refBlock, refAsset, refAddress, claimSignature, payload } = this;
 
     return {
       type,
       prev,
+      symbol,
       senderBalance,
       senderAmount,
       refBlock,
@@ -97,6 +101,7 @@ export function fromBlockObject(obj: any) {
   block.signature = obj.signature;
   block.type = obj.type;
   block.prev = obj.prev;
+  block.symbol = obj.symbol;
   block.refBlock = obj.refBlock;
   block.refAsset = obj.refAsset;
   block.claimSignature = obj.claimSignature;

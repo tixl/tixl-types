@@ -55,7 +55,7 @@ export class Blockchain {
       prevIndex[block.prev as string] = block;
     });
 
-    const assetBlock = this.blocks.find((block) => block.type === BlockType.ASSET && block.refAsset === asset);
+    const assetBlock = this.blocks.find((block) => block.type === BlockType.ASSET && block.symbol === asset);
 
     // chain has no asset created yet
     if (!assetBlock) return;
