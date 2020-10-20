@@ -46,10 +46,22 @@ export class Block {
   senderBalance: EncryptedNumber;
   senderAmount: EncryptedNumber;
 
+  nonce?: number[];
   state?: string;
 
   getDataForSignature(): SignatureData {
-    const { type, prev, symbol, senderBalance, senderAmount, refBlock, refAsset, refAddress, claimSignature, payload } = this;
+    const {
+      type,
+      prev,
+      symbol,
+      senderBalance,
+      senderAmount,
+      refBlock,
+      refAsset,
+      refAddress,
+      claimSignature,
+      payload,
+    } = this;
 
     return {
       type,
