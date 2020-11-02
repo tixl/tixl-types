@@ -116,6 +116,7 @@ export function fromBlockObject(obj: any) {
   block.symbol = obj.symbol;
   block.refBlock = obj.refBlock;
   block.refAsset = obj.refAsset;
+  block.refAddress = obj.refAddress;
   block.claimSignature = obj.claimSignature;
   block.createdAt = obj.createdAt;
   block.senderBalance = obj.senderBalance;
