@@ -1,5 +1,6 @@
+import { AssetSymbol } from './Blockchain';
+import { SigPublicKey } from './Keys';
 import { StorageId } from './Storage';
-import { NTRUPublicKey } from './Keys';
 
 export type EncryptedNumber = string;
 export type EncryptedString = string;
@@ -9,19 +10,14 @@ export class Signature extends String {}
 export type SignatureData = {
   type: string;
   prev: Signature | undefined;
-  payload: string;
-  amountCommitment: string;
-  balanceCommitment: string;
-  amountRangeProof: string;
-  balanceRangeProof: string;
-  receiverAmount: string;
-  receiverBlindingFactorAmount: string;
-  senderBlindingFactorBalance: string;
+  symbol: AssetSymbol | undefined;
   senderBalance: string;
   senderAmount: string;
   refBlock: Signature | undefined;
   refAsset: string | undefined;
+  refAddress: SigPublicKey | undefined;
   claimSignature: string | undefined;
+  payload: string | undefined;
 };
 
 export enum BlockType {
@@ -30,6 +26,7 @@ export enum BlockType {
   SEND = 'SEND',
   DEPOSIT = 'DEPOSIT',
   WITHDRAWAL = 'WITHDRAWAL',
+  ASSET = 'ASSET',
 }
 
 export class Block {
@@ -38,60 +35,45 @@ export class Block {
   txId: string;
   signature: Signature;
   type: BlockType;
+  symbol: AssetSymbol | undefined;
   prev: Signature | undefined;
-  payload: string;
   refBlock: Signature | undefined;
   refAsset: string | undefined;
+  refAddress: SigPublicKey | undefined;
   claimSignature: string | undefined;
+  payload: string | undefined;
   createdAt: number;
-  amountCommitment: string;
-  balanceCommitment: string;
-  amountRangeProof: string;
-  balanceRangeProof: string;
-  receiverAmount: EncryptedNumber;
-  receiverBlindingFactorAmount: EncryptedString;
-  senderBlindingFactorBalance: EncryptedString;
   senderBalance: EncryptedNumber;
   senderAmount: EncryptedNumber;
-  publicNtruKey: NTRUPublicKey | undefined;
 
+  nonce?: number[];
   state?: string;
 
   getDataForSignature(): SignatureData {
     const {
       type,
       prev,
-      payload,
-      amountCommitment,
-      balanceCommitment,
-      amountRangeProof,
-      balanceRangeProof,
-      receiverAmount,
-      receiverBlindingFactorAmount,
-      senderBlindingFactorBalance,
+      symbol,
       senderBalance,
       senderAmount,
       refBlock,
       refAsset,
+      refAddress,
       claimSignature,
+      payload,
     } = this;
 
     return {
       type,
       prev,
-      payload,
-      amountCommitment,
-      balanceCommitment,
-      amountRangeProof,
-      balanceRangeProof,
-      receiverAmount,
-      receiverBlindingFactorAmount,
-      senderBlindingFactorBalance,
+      symbol,
       senderBalance,
       senderAmount,
       refBlock,
       refAsset,
+      refAddress,
       claimSignature,
+      payload,
     };
   }
 
@@ -122,10 +104,6 @@ export class Block {
     if (prev) {
       this.prev = prev.signature;
     }
-
-    if (this.type === BlockType.SEND) {
-      this.receiverAmount = amount.toString();
-    }
   }
 }
 
@@ -135,44 +113,23 @@ export function fromBlockObject(obj: any) {
   block.signature = obj.signature;
   block.type = obj.type;
   block.prev = obj.prev;
-  block.payload = obj.payload;
+  block.symbol = obj.symbol;
   block.refBlock = obj.refBlock;
   block.refAsset = obj.refAsset;
+  block.refAddress = obj.refAddress;
   block.claimSignature = obj.claimSignature;
   block.createdAt = obj.createdAt;
-  block.amountCommitment = obj.amountCommitment;
-  block.balanceCommitment = obj.balanceCommitment;
-  block.amountRangeProof = obj.amountRangeProof;
-  block.balanceRangeProof = obj.balanceRangeProof;
-  block.receiverAmount = obj.receiverAmount;
-  block.receiverBlindingFactorAmount = obj.receiverBlindingFactorAmount;
-  block.senderBlindingFactorBalance = obj.senderBlindingFactorBalance;
   block.senderBalance = obj.senderBalance;
   block.senderAmount = obj.senderAmount;
-  block.publicNtruKey = obj.publicNtruKey;
   block.state = obj.state;
+  block.payload = obj.payload;
 
   return block;
 }
 
-export type CommitmentData = {
-  type: string;
-  amount: string | number | bigint;
-  balance: string | number | bigint;
-};
-
 export type BlockValues = {
   amount: string | number | bigint;
   balance: string | number | bigint;
-};
-
-export type BlockCommitments = {
-  balanceCommitment: any;
-  amountCommitment: any;
-  amountRangeProof: any;
-  balanceRangeProof: any;
-  balanceCommitmentBlindFactor: any;
-  amountCommitmentBlindFactor: any;
 };
 
 export function isBlock(val: any): boolean {

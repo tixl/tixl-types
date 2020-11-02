@@ -1,5 +1,5 @@
 import { Block, fromBlockObject, BlockType } from './Block';
-import { SigPublicKey, NTRUPublicKey } from './Keys';
+import { SigPublicKey } from './Keys';
 import { StorageId } from './Storage';
 
 export enum AssetSymbol {
@@ -11,14 +11,10 @@ export class Blockchain {
   id: StorageId;
   leafId: StorageId | undefined;
   publicSig: SigPublicKey;
-  publicNtru: NTRUPublicKey | undefined;
-  assetSymbol: AssetSymbol;
   blocks: Block[] = [];
 
-  constructor(publicSig: SigPublicKey, publicNtru?: NTRUPublicKey, symbol?: AssetSymbol) {
+  constructor(publicSig: SigPublicKey) {
     this.publicSig = publicSig;
-    this.publicNtru = publicNtru;
-    this.assetSymbol = symbol || AssetSymbol.TXL;
   }
 
   addBlock(block: Block): void {
@@ -26,8 +22,45 @@ export class Blockchain {
   }
 
   leaf(): Block | undefined {
-    const prevs = this.blocks.map(block => block.prev).filter(prev => !!prev);
-    return this.blocks.find(block => prevs.indexOf(block.signature) === -1);
+    const prevIndex: Record<string, Block> = {};
+
+    // index points to next blocks
+    // you can look up which blocks points to a signature
+    this.blocks.forEach((block) => {
+      // only interested in asset blocks
+      if (block.type !== BlockType.ASSET) return;
+
+      prevIndex[block.prev as string] = block;
+    });
+
+    const anyAssetBlock = this.blocks.find((block) => block.type === BlockType.ASSET);
+
+    if (!anyAssetBlock) {
+      // chains without assets block may have just one or zero blocks
+      return this.blocks[0];
+    }
+
+    return recursiveLeaf(prevIndex, anyAssetBlock);
+  }
+
+  leafAsset(asset: AssetSymbol): Block | undefined {
+    const prevIndex: Record<string, Block> = {};
+
+    // index points to next blocks
+    // you can look up which blocks points to a signature
+    this.blocks.forEach((block) => {
+      // not interested in asset blocks
+      if (block.type === BlockType.ASSET) return;
+
+      prevIndex[block.prev as string] = block;
+    });
+
+    const assetBlock = this.blocks.find((block) => block.type === BlockType.ASSET && block.symbol === asset);
+
+    // chain has no asset created yet
+    if (!assetBlock) return;
+
+    return recursiveLeaf(prevIndex, assetBlock);
   }
 
   openingBlock(): Block | undefined {
@@ -35,12 +68,20 @@ export class Blockchain {
       return;
     }
 
-    return this.blocks.filter(block => block.type === BlockType.OPENING && !block.prev).pop();
+    return this.blocks.filter((block) => block.type === BlockType.OPENING && !block.prev).pop();
   }
 }
 
+function recursiveLeaf(index: Record<string, Block>, current: Block): Block {
+  const nextBlock = index[current.signature as string];
+
+  if (!nextBlock) return current;
+
+  return recursiveLeaf(index, nextBlock);
+}
+
 export function fromBlockchainObject(obj: any) {
-  const chain = new Blockchain(obj.publicSig, obj.publicNtru, obj.assetSymbol);
+  const chain = new Blockchain(obj.publicSig);
   chain.blocks = obj.blocks.map(deserializeBlock);
 
   return chain;
