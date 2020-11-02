@@ -1,6 +1,6 @@
 {
   "name": "@tixl/tixl-types",
-  "version": "0.6.10-feature-op",
+  "version": "0.6.11",
   "repository": "git@github.com:tixl/tixl-types.git",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
