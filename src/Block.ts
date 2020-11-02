@@ -2,9 +2,6 @@ import { AssetSymbol } from './Blockchain';
 import { SigPublicKey } from './Keys';
 import { StorageId } from './Storage';
 
-export type EncryptedNumber = string;
-export type EncryptedString = string;
-
 export class Signature extends String {}
 
 export type SignatureData = {
@@ -43,8 +40,8 @@ export class Block {
   claimSignature: string | undefined;
   payload: string | undefined;
   createdAt: number;
-  senderBalance: EncryptedNumber;
-  senderAmount: EncryptedNumber;
+  senderBalance: string;
+  senderAmount: string;
 
   nonce?: number[];
   state?: string;
