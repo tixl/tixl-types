@@ -15,6 +15,7 @@ export type SignatureData = {
   refAddress: SigPublicKey | undefined;
   claimSignature: string | undefined;
   payload: string | undefined;
+  feeAmount: string | undefined;
 };
 
 export enum BlockType {
@@ -27,9 +28,12 @@ export enum BlockType {
 }
 
 export class Block {
+  // ledger level
   id: StorageId;
   chainId: StorageId;
   txId: string;
+
+  // common fields
   signature: Signature;
   type: BlockType;
   symbol: AssetSymbol | undefined;
@@ -42,9 +46,11 @@ export class Block {
   createdAt: number;
   senderBalance: string;
   senderAmount: string;
+  feeAmount: string | undefined;
 
-  nonce?: number[];
-  state?: string;
+  // used mostly on wallet level
+  nonce: number[] | undefined;
+  state: string | undefined;
 
   getDataForSignature(): SignatureData {
     const {
@@ -58,6 +64,7 @@ export class Block {
       refAddress,
       claimSignature,
       payload,
+      feeAmount,
     } = this;
 
     return {
@@ -71,6 +78,7 @@ export class Block {
       refAddress,
       claimSignature,
       payload,
+      feeAmount,
     };
   }
 
@@ -120,6 +128,8 @@ export function fromBlockObject(obj: any) {
   block.senderAmount = obj.senderAmount;
   block.state = obj.state;
   block.payload = obj.payload;
+  block.nonce = obj.nonce;
+  block.feeAmount = obj.feeAmount;
 
   return block;
 }
