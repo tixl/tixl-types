@@ -17,11 +17,6 @@ export class Transaction {
   publicSig: SigPublicKey;
 
   /**
-   * Proof that a certain amount of work was burned.
-   */
-  work: string;
-
-  /**
    * Network slot when the transaction was accepted.
    */
   slot: number;
@@ -44,6 +39,6 @@ export class Transaction {
       return false;
     }
 
-    return this.blocks.some(block => block.type === BlockType.OPENING && !block.prev);
+    return this.blocks.some((block) => block.type === BlockType.OPENING && !block.prev);
   }
 }
