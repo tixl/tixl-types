@@ -1,6 +1,6 @@
 {
   "name": "@tixl/tixl-types",
-  "version": "0.6.12",
+  "version": "0.7.0",
   "repository": "git@github.com:tixl/tixl-types.git",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,5 +17,8 @@
   "devDependencies": {
     "prettier": "2.1.2",
     "typescript": "4.0.3"
+  },
+  "peerDependencies": {
+    "buffer": "6.0.3"
   }
 }
