@@ -25,6 +25,7 @@ export enum BlockType {
   DEPOSIT = 'DEPOSIT',
   WITHDRAWAL = 'WITHDRAWAL',
   ASSET = 'ASSET',
+  BURN = 'BURN',
 }
 
 export class Block {
