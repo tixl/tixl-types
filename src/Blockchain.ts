@@ -5,6 +5,7 @@ import { StorageId } from './Storage';
 export enum AssetSymbol {
   TXL = 'TXL',
   BTC = 'BTC',
+  ETH = 'ETH',
 }
 
 export class Blockchain {
